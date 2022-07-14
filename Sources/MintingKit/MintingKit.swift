@@ -2,10 +2,47 @@ import SwiftUI
 import BetterSafariView
 import LocalAuthentication
 import KeychainSwift
+import Alamofire
+import SwiftyJSON
 
 
 private enum LoginError: Error {
     case tokenError(String)
+}
+
+public struct ABProject {
+    let id: String
+    let title: String
+}
+
+
+public struct MintingKit {
+    let token: String
+    let endpoint = URL(string: "https://minting-api.artblocks.io")!
+    
+    private func buildHeaders() -> HTTPHeaders {
+        return [
+            "Authorization": "Token \(token)",
+            "Accept": "application/json"
+        ]
+    }
+    
+    public func listProjects(onSuccess: @escaping ([ABProject]) -> (), onFailure: @escaping (Error) -> ()) {
+        DispatchQueue.main.async {
+            AF.request(endpoint.appendingPathComponent("project"), method: .get, headers: buildHeaders()).validate().responseJSON { response in
+                switch response.result {
+                case .success(let value):
+                    let json = JSON(value)["results"].arrayValue
+                    let projects = json.map { project in
+                        return ABProject(id: project["id"].stringValue, title: project["title"].stringValue)
+                    }
+                    onSuccess(projects)
+                case .failure(let error):
+                    onFailure(error)
+                }
+            }
+        }
+    }
 }
 
 public struct MintingLoginButton: View {
