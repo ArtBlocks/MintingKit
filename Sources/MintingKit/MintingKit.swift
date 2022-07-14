@@ -9,6 +9,10 @@ private enum LoginError: Error {
   case tokenError(String)
 }
 
+private enum ENSError: Error {
+  case ensNotFound(String)
+}
+
 public struct ABProject {
   let id: String
   let title: String
@@ -28,20 +32,40 @@ public struct MintingKit {
   public func listProjects(
     onSuccess: @escaping ([ABProject]) -> Void, onFailure: @escaping (Error) -> Void
   ) {
-    DispatchQueue.main.async {
-      AF.request(endpoint.appendingPathComponent("project"), method: .get, headers: buildHeaders())
-        .validate().responseJSON { response in
-          switch response.result {
-          case .success(let value):
-            let json = JSON(value)["results"].arrayValue
-            let projects = json.map { project in
-              return ABProject(id: project["id"].stringValue, title: project["title"].stringValue)
-            }
-            onSuccess(projects)
-          case .failure(let error):
-            onFailure(error)
+    AF.request(endpoint.appendingPathComponent("project"), method: .get, headers: buildHeaders())
+      .validate().responseJSON { response in
+        switch response.result {
+        case .success(let value):
+          let json = JSON(value)["results"].arrayValue
+          let projects = json.map { project in
+            return ABProject(id: project["id"].stringValue, title: project["title"].stringValue)
           }
+          onSuccess(projects)
+        case .failure(let error):
+          onFailure(error)
         }
+      }
+  }
+
+  public func ensLookup(
+    ensName: String,
+    onSuccess: @escaping (String) -> Void, onFailure: @escaping (Error) -> Void
+  ) {
+    AF.request(
+      endpoint.appendingPathComponent("wallet/ens?ens_name=\(ensName)"), method: .get,
+      headers: buildHeaders()
+    ).validate().responseJSON { response in
+      switch response.result {
+      case .success(let value):
+        let json = JSON(value)
+        if let ethAddress = json["eth_address"].string {
+          onSuccess(ethAddress)
+        } else {
+          onFailure(ENSError.ensNotFound("Unable to find ENS name: \(ensName)"))
+        }
+      case .failure(let error):
+        onFailure(error)
+      }
     }
   }
 }
