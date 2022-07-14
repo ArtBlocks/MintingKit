@@ -1,4 +1,4 @@
-# Swift5 API client for OpenAPIClient
+# MintingKit: Swift5 Minting API Client
 
 This documentation provides examples and information for implementing client applications for the Powered by Art Blocks Minting Machine API.
 
