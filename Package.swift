@@ -5,6 +5,7 @@ import PackageDescription
 
 let package = Package(
     name: "MintingKit",
+    platforms: [.iOS(.v13), .macOS(.v10_15), .watchOS("6.2")],
     products: [
         // Products define the executables and libraries a package produces, and make them visible to other packages.
         .library(
@@ -18,9 +19,14 @@ let package = Package(
     targets: [
         // Targets are the basic building blocks of a package. A target can define a module or a test suite.
         // Targets can depend on other targets in this package, and on products in packages this package depends on.
+        .target(name: "BetterSafariView"),
+        .target(
+          name: "KeychainSwift",
+          exclude: ["Info.plist"]
+        ),
         .target(
             name: "MintingKit",
-            dependencies: []),
+            dependencies: ["BetterSafariView", "KeychainSwift"]),
         .testTarget(
             name: "MintingKitTests",
             dependencies: ["MintingKit"]),
