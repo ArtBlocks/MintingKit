@@ -68,6 +68,30 @@ public struct MintingKit {
       }
     }
   }
+
+  public func checkIfMintable(
+    projectId: String,
+    onSuccess: @escaping (Bool, String) -> Void, onFailure: @escaping (Error) -> Void
+  ) {
+    let headers: HTTPHeaders = [
+      "Authorization": "Token " + token,
+      "Accept": "application/json",
+    ]
+    DispatchQueue.main.async {
+      AF.request(
+        "https://minting-api.artblocks.io/project/\(projectId)/mintable", method: .get,
+        headers: headers
+      ).validate().responseJSON { response in
+        switch response.result {
+        case .success(let value):
+          let json = JSON(value)
+          onSuccess(json["mintable"].boolValue, json["message"].stringValue)
+        case .failure(let error):
+          onFailure(error)
+        }
+      }
+    }
+  }
 }
 
 public struct MintingLoginButton<Label: View>: View {
