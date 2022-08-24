@@ -132,7 +132,11 @@ public struct MintingKit {
     }
   }
 
-  public func retrieveMint(mintId: String) {
+  public func retrieveMint(
+    mintId: String,
+                           onSuccess: @escaping (ABProjectMint) -> Void,
+                           onFailure: @escaping (Error) -> Void
+  ) {
     let headers: HTTPHeaders = [
       "Authorization": "Token \(token)",
       "Accept": "application/json",
@@ -160,10 +164,10 @@ public struct MintingKit {
           mint.receipt = json["receipt"]
 
           mint.isPaid = json["is_paid"].bool
+            onSuccess(mint)
         case .failure(let error):
-          print(error)
+          onFailure(mint)
         }
-        pollProject()
       }
     }
   }
