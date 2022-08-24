@@ -18,6 +18,14 @@ public struct ABProject {
   let title: String
 }
 
+public struct ABProjectMint {
+  var blockConfirmations: Int
+  var shareUrl: String?
+  var embedUrl: String?
+  var receipt: JSON?
+  var isPaid: Bool?
+}
+
 public struct MintingKit {
   let token: String
   let endpoint = URL(string: "https://minting-api.artblocks.io")!
@@ -89,6 +97,73 @@ public struct MintingKit {
         case .failure(let error):
           onFailure(error)
         }
+      }
+    }
+  }
+
+  public func mintProject(
+    projectId: String, walletAddress: String,
+    onSuccess: @escaping (String) -> Void,
+    onFailure: @escaping (Error) -> Void
+  ) {
+    DispatchQueue.main.async {
+      let headers: HTTPHeaders = [
+        "Authorization": "Token " + currentToken!,
+        "Accept": "application/json",
+      ]
+      let parameters: [String: String] = [
+        "destination_wallet": walletAddress,
+        "project": projectId,
+      ]
+
+      AF.request(
+        "https://minting-api.artblocks.io/minting",
+        method: .post, parameters: parameters, encoding: JSONEncoding.default,
+        headers: headers
+      ).validate().responseJSON { response in
+        switch response.result {
+        case .success(let value):
+          let json = JSON(value)
+          onSuccess(json["id"].stringValue)
+        case .failure(let error):
+          onFailure(error)
+        }
+      }
+    }
+  }
+
+  public func retrieveMint(mintId: String) {
+    let headers: HTTPHeaders = [
+      "Authorization": "Token \(token)",
+      "Accept": "application/json",
+    ]
+    DispatchQueue.main.async {
+      AF.request(
+        "https://minting-api.artblocks.io/minting/\(mintId)", method: .get, headers: headers
+      ).validate().responseJSON {
+        response in
+        switch response.result {
+        case .success(let value):
+          let json = JSON(value)
+          var mint = ABProjectMint(blockConfirmations: 0)
+          if let confirmations = json["block_confirmations"].int {
+            mint.blockConfirmations = confirmations
+          }
+          if let shareUrlString = json["share_url"].string {
+            mint.shareUrl = shareUrlString
+          }
+          if let urlString = json["embed_url"].string {
+            if mint.blockConfirmations >= 3 {
+              mint.embedUrl = urlString
+            }
+          }
+          mint.receipt = json["receipt"]
+
+          mint.isPaid = json["is_paid"].bool
+        case .failure(let error):
+          print(error)
+        }
+        pollProject()
       }
     }
   }
