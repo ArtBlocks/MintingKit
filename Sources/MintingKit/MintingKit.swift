@@ -108,7 +108,7 @@ public struct MintingKit {
   ) {
     DispatchQueue.main.async {
       let headers: HTTPHeaders = [
-        "Authorization": "Token " + currentToken!,
+        "Authorization": "Token " + token,
         "Accept": "application/json",
       ]
       let parameters: [String: String] = [
@@ -134,8 +134,8 @@ public struct MintingKit {
 
   public func retrieveMint(
     mintId: String,
-                           onSuccess: @escaping (ABProjectMint) -> Void,
-                           onFailure: @escaping (Error) -> Void
+    onSuccess: @escaping (ABProjectMint) -> Void,
+    onFailure: @escaping (Error) -> Void
   ) {
     let headers: HTTPHeaders = [
       "Authorization": "Token \(token)",
@@ -164,9 +164,9 @@ public struct MintingKit {
           mint.receipt = json["receipt"]
 
           mint.isPaid = json["is_paid"].bool
-            onSuccess(mint)
+          onSuccess(mint)
         case .failure(let error):
-          onFailure(mint)
+          onFailure(error)
         }
       }
     }
