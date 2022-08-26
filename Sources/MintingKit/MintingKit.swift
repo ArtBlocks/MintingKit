@@ -134,7 +134,7 @@ public struct MintingKit {
     }
   }
 
-  public func retrieveMint(
+  public func retrieveMinting(
     mintId: String,
     onSuccess: @escaping (MKMinting) -> Void,
     onFailure: @escaping (Error) -> Void
