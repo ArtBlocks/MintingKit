@@ -5,6 +5,8 @@ import LocalAuthentication
 import SwiftUI
 import SwiftyJSON
 
+let API_BASE_URL = "https://minting-api.artblocks.io"
+
 private enum LoginError: Error {
   case tokenError(String)
 }
@@ -28,7 +30,7 @@ public struct MKMinting {
 
 public struct MintingKit {
   let token: String
-  let endpoint = URL(string: "https://minting-api.artblocks.io")!
+  let endpoint = URL(string: API_BASE_URL)!
 
   private func buildHeaders() -> HTTPHeaders {
     return [
@@ -87,7 +89,7 @@ public struct MintingKit {
     ]
     DispatchQueue.main.async {
       AF.request(
-        "https://minting-api.artblocks.io/project/\(projectId)/mintable", method: .get,
+        endpoint.appendingPathComponent("project/\(projectId)/mintable"), method: .get,
         headers: headers
       ).validate().responseJSON { response in
         switch response.result {
@@ -117,7 +119,7 @@ public struct MintingKit {
       ]
 
       AF.request(
-        "https://minting-api.artblocks.io/minting",
+        endpoint.appendingPathComponent("minting"),
         method: .post, parameters: parameters, encoding: JSONEncoding.default,
         headers: headers
       ).validate().responseJSON { response in
@@ -143,7 +145,7 @@ public struct MintingKit {
     ]
     DispatchQueue.main.async {
       AF.request(
-        "https://minting-api.artblocks.io/minting/\(mintId)", method: .get, headers: headers
+        endpoint.appendingPathComponent("minting/\(mintId)"), method: .get, headers: headers
       ).validate().responseJSON {
         response in
         switch response.result {
@@ -232,7 +234,7 @@ public struct MintingLoginButton<Label: View>: View {
     }
     .webAuthenticationSession(isPresented: $startingWebAuthenticationSession) {
       WebAuthenticationSession(
-        url: URL(string: "https://minting-api.artblocks.io/app/?appauth=true")!,
+        url: endpoint.appendingPathComponent("app/?appauth=true"),
         callbackURLScheme: "txlessauth"
       ) { callbackURL, error in
         if let t = callbackURL?.host {
