@@ -13,12 +13,12 @@ private enum ENSError: Error {
   case ensNotFound(String)
 }
 
-public struct ABProject {
+public struct MKProject {
   let id: String
   let title: String
 }
 
-public struct ABProjectMint {
+public struct MKMinting {
   var blockConfirmations: Int
   var shareUrl: String?
   var embedUrl: String?
@@ -38,7 +38,7 @@ public struct MintingKit {
   }
 
   public func listProjects(
-    onSuccess: @escaping ([ABProject]) -> Void, onFailure: @escaping (Error) -> Void
+    onSuccess: @escaping ([MKProject]) -> Void, onFailure: @escaping (Error) -> Void
   ) {
     AF.request(endpoint.appendingPathComponent("project"), method: .get, headers: buildHeaders())
       .validate().responseJSON { response in
@@ -46,7 +46,7 @@ public struct MintingKit {
         case .success(let value):
           let json = JSON(value)["results"].arrayValue
           let projects = json.map { project in
-            return ABProject(id: project["id"].stringValue, title: project["title"].stringValue)
+            return MKProject(id: project["id"].stringValue, title: project["title"].stringValue)
           }
           onSuccess(projects)
         case .failure(let error):
@@ -134,7 +134,7 @@ public struct MintingKit {
 
   public func retrieveMint(
     mintId: String,
-    onSuccess: @escaping (ABProjectMint) -> Void,
+    onSuccess: @escaping (MKMinting) -> Void,
     onFailure: @escaping (Error) -> Void
   ) {
     let headers: HTTPHeaders = [
@@ -149,7 +149,7 @@ public struct MintingKit {
         switch response.result {
         case .success(let value):
           let json = JSON(value)
-          var mint = ABProjectMint(blockConfirmations: 0)
+          var mint = MKMinting(blockConfirmations: 0)
           if let confirmations = json["block_confirmations"].int {
             mint.blockConfirmations = confirmations
           }
