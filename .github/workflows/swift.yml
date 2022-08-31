@@ -13,7 +13,14 @@ jobs:
 
     steps:
     - uses: actions/checkout@v3
+    - name: Install swift-format
+      run: |
+        brew update
+        brew install swift-format
+        brew upgrade
     - uses: swift-actions/setup-swift@v1
+    - name: Format
+      run: swift-format -r .
     - name: Build
       run: swift build -v
     - name: Run tests
