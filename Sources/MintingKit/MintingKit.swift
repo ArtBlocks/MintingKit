@@ -112,7 +112,7 @@ public struct MintingKit {
   }
 
   /**
-   Verifies that a particular project can be minted by the currently authenticated machine.
+   Verifies that a project can be minted by the currently authenticated machine.
    - Parameter projectId: the full string ID of the project being minted
    - Parameter onSuccess: The callback function to handle the retrieved status of the project
    - Parameter onFailure: The callback function to handle REST API errors
