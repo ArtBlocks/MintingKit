@@ -7,6 +7,7 @@ import SwiftyJSON
 
 let API_BASE_URL_STRING = "https://minting-api.artblocks.io"
 let ENDPOINT_URL = URL(string: API_BASE_URL_STRING)!
+let RENDER_BLOCK_CONFIRMATIONS = 3  // number of block confirmations before rendering
 
 private enum LoginError: Error {
   case tokenError(String)
@@ -22,7 +23,7 @@ public struct MKProject {
 }
 
 public struct MKMinting {
-  var blockConfirmations: Int
+  var blockConfirmations: Int?
   var shareUrl: String?
   var embedUrl: String?
   var receipt: JSON?
@@ -184,7 +185,7 @@ public struct MintingKit {
         switch response.result {
         case .success(let value):
           let json = JSON(value)
-          var mint = MKMinting(blockConfirmations: 0)
+          var mint = MKMinting()
           if let confirmations = json["block_confirmations"].int {
             mint.blockConfirmations = confirmations
           }
@@ -192,7 +193,7 @@ public struct MintingKit {
             mint.shareUrl = shareUrlString
           }
           if let urlString = json["embed_url"].string {
-            if mint.blockConfirmations >= 3 {
+            if mint.blockConfirmations >= RENDER_BLOCK_CONFIRMATIONS {
               mint.embedUrl = urlString
             }
           }
