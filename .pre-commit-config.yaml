@@ -1,0 +1,24 @@
+repos:
+-   repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v2.3.0
+    hooks:
+    -   id: check-yaml
+        description: Ensure parseable yaml/yml files
+        args: [--allow-multiple-documents]
+    -   id: check-json
+        description: Ensure only valid json is commited
+    -   id: end-of-file-fixer
+        description: Ensures that a file is either empty, or ends with one newline.
+    -   id: trailing-whitespace
+    -   id: no-commit-to-branch
+        name: no commits to main
+        description: Ensures commit is not on main, we want to use feature branches.
+        args: [--branch, main]
+-   repo: local
+    hooks:
+    -   id: swiftformat
+        name: Swift Format
+        description: Enforces global formatting guidelines for Swift files before commiting.
+        language: system
+        entry: swift format -i
+        files: .swift$

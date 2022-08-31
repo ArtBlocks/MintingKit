@@ -52,19 +52,21 @@ public struct MintingKit {
   public func listProjects(
     onSuccess: @escaping ([MKProject]) -> Void, onFailure: @escaping (Error) -> Void
   ) {
-    AF.request(ENDPOINT_URL.appendingPathComponent("project"), method: .get, headers: buildHeaders())
-      .validate().responseJSON { response in
-        switch response.result {
-        case .success(let value):
-          let json = JSON(value)["results"].arrayValue
-          let projects = json.map { project in
-            return MKProject(id: project["id"].stringValue, title: project["title"].stringValue)
-          }
-          onSuccess(projects)
-        case .failure(let error):
-          onFailure(error)
+    AF.request(
+      ENDPOINT_URL.appendingPathComponent("project"), method: .get, headers: buildHeaders()
+    )
+    .validate().responseJSON { response in
+      switch response.result {
+      case .success(let value):
+        let json = JSON(value)["results"].arrayValue
+        let projects = json.map { project in
+          return MKProject(id: project["id"].stringValue, title: project["title"].stringValue)
         }
+        onSuccess(projects)
+      case .failure(let error):
+        onFailure(error)
       }
+    }
   }
 
   /**
@@ -209,10 +211,8 @@ public struct MintingKit {
   }
 }
 
-/**
- A login button that signs in the current iOS user into the Minting API.
- 
- */
+/// A login button that signs in the current iOS user into the Minting API.
+
 public struct MintingLoginButton<Label: View>: View {
   @State private var startingWebAuthenticationSession = false
   let keychain = KeychainSwift()
