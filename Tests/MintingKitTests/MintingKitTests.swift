@@ -7,6 +7,6 @@ final class MintingKitTests: XCTestCase {
     // This is an example of a functional test case.
     // Use XCTAssert and related functions to verify your tests produce the correct
     // results.
-    XCTAssertEqual(MintingKit().text, "Hello, World!")
+    XCTAssertEqual(MintingKit(token: "faketoken").token, "faketoken")
   }
 }
