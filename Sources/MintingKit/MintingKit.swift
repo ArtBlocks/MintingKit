@@ -17,16 +17,30 @@ private enum ENSError: Error {
   case ensNotFound(String)
 }
 
+/// Data structure describing a mintable Art Blocks project
 public struct MKProject {
+  /// The string ID of the project available for minting
   let id: String
+
+  /// The string title of the project available for minting
   let title: String
 }
 
+/// Data structure describing a single minting transaction and its current status
 public struct MKMinting {
+  /// The number of block confirmations for the minting transaction
   var blockConfirmations: Int?
+
+  /// The shareable URL for the artwork that the user can send to others
   var shareUrl: String?
+
+  /// The generator URL that can be placed in an iframe or WebView to display the artwork
   var embedUrl: String?
+
+  /// The full data of the Ethereum transaction receipt
   var receipt: JSON?
+
+  /// Whether or not the minting fee has been paid in fiat
   var isPaid: Bool?
 }
 
