@@ -17,16 +17,30 @@ private enum ENSError: Error {
   case ensNotFound(String)
 }
 
+/// Data structure describing a mintable Art Blocks project
 public struct MKProject {
+  /// The string ID of the project available for minting
   let id: String
+
+  /// The string title of the project available for minting
   let title: String
 }
 
+/// Data structure describing a single minting transaction and its current status
 public struct MKMinting {
+  /// The number of block confirmations for the minting transaction
   var blockConfirmations: Int?
+
+  /// The shareable URL for the artwork that the user can send to others
   var shareUrl: String?
+
+  /// The generator URL that can be placed in an iframe or WebView to display the artwork
   var embedUrl: String?
+
+  /// The full data of the Ethereum transaction receipt
   var receipt: JSON?
+
+  /// Whether or not the minting fee has been paid in fiat
   var isPaid: Bool?
 }
 
@@ -52,19 +66,21 @@ public struct MintingKit {
   public func listProjects(
     onSuccess: @escaping ([MKProject]) -> Void, onFailure: @escaping (Error) -> Void
   ) {
-    AF.request(ENDPOINT_URL.appendingPathComponent("project"), method: .get, headers: buildHeaders())
-      .validate().responseJSON { response in
-        switch response.result {
-        case .success(let value):
-          let json = JSON(value)["results"].arrayValue
-          let projects = json.map { project in
-            return MKProject(id: project["id"].stringValue, title: project["title"].stringValue)
-          }
-          onSuccess(projects)
-        case .failure(let error):
-          onFailure(error)
+    AF.request(
+      ENDPOINT_URL.appendingPathComponent("project"), method: .get, headers: buildHeaders()
+    )
+    .validate().responseJSON { response in
+      switch response.result {
+      case .success(let value):
+        let json = JSON(value)["results"].arrayValue
+        let projects = json.map { project in
+          return MKProject(id: project["id"].stringValue, title: project["title"].stringValue)
         }
+        onSuccess(projects)
+      case .failure(let error):
+        onFailure(error)
       }
+    }
   }
 
   /**
@@ -96,7 +112,7 @@ public struct MintingKit {
   }
 
   /**
-   Verifies that a particular project can be minted by the currently authenticated machine.
+   Verifies that a project can be minted by the currently authenticated machine.
    - Parameter projectId: the full string ID of the project being minted
    - Parameter onSuccess: The callback function to handle the retrieved status of the project
    - Parameter onFailure: The callback function to handle REST API errors
@@ -193,8 +209,10 @@ public struct MintingKit {
             mint.shareUrl = shareUrlString
           }
           if let urlString = json["embed_url"].string {
-            if mint.blockConfirmations >= RENDER_BLOCK_CONFIRMATIONS {
-              mint.embedUrl = urlString
+            if let currentConfirmations = mint.blockConfirmations {
+              if currentConfirmations >= RENDER_BLOCK_CONFIRMATIONS {
+                mint.embedUrl = urlString
+              }
             }
           }
           mint.receipt = json["receipt"]
@@ -209,10 +227,8 @@ public struct MintingKit {
   }
 }
 
-/**
- A login button that signs in the current iOS user into the Minting API.
- 
- */
+/// A login button that signs in the current iOS user into the Minting API.
+
 public struct MintingLoginButton<Label: View>: View {
   @State private var startingWebAuthenticationSession = false
   let keychain = KeychainSwift()

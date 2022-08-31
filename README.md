@@ -10,3 +10,14 @@ Before you can consume the API, you will need a user account. If you have any qu
 - [Log in to the dashboard](/admin/login) to manage your PBAB projects
 - [View your testnet tokens](http://artist-staging.artblocks.io/) on the staging Art Blocks portal
 - [Read additional documentation](https://docs.artblocks.io/creator-docs/powered-by-art-blocks-pbab-onboarding/pbab-101/) on the PBAB API
+
+## SDK Development
+
+To get started developing this repository, you will need to perform these steps after cloning:
+
+1. Install Homebrew: https://brew.sh/
+2. Install pre-commit with: `brew install pre-commit`
+3. Install swift-format with: `brew install swift-format`
+4. Install pre-commit hooks: `pre-commit install`
+
+Once you have the development environment set up, you can commit code changes and run tests.

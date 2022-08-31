@@ -19,16 +19,14 @@ concurrency:
 
 jobs:
   docs:
-    runs-on: ubuntu-latest
+    runs-on: macos-latest
 
     steps:
     - uses: actions/checkout@v3
     - name: Set up Pages
       uses: actions/configure-pages@v1
     - name: Set up Swift
-      uses: fwal/setup-swift@v1
-      with:
-        swift-version: '5.6'
+      uses: swift-actions/setup-swift@v1
     - name: Generate Docs
       uses: fwcd/swift-docc-action@v1
       with:
@@ -43,6 +41,10 @@ jobs:
         path: ./public
 
   deploy:
+    permissions:
+      pages: write      # to deploy to Pages
+      id-token: write   # to verify the deployment originates from an appropriate source
+
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
@@ -51,4 +53,5 @@ jobs:
 
     steps:
     - name: Deploy Docs
+      id: deployment
       uses: actions/deploy-pages@v1
