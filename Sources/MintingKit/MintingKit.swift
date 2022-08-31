@@ -195,8 +195,10 @@ public struct MintingKit {
             mint.shareUrl = shareUrlString
           }
           if let urlString = json["embed_url"].string {
-            if mint.blockConfirmations >= RENDER_BLOCK_CONFIRMATIONS {
-              mint.embedUrl = urlString
+            if let currentConfirmations = mint.blockConfirmations {
+              if currentConfirmations >= RENDER_BLOCK_CONFIRMATIONS {
+                mint.embedUrl = urlString
+              }
             }
           }
           mint.receipt = json["receipt"]
