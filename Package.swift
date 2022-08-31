@@ -19,6 +19,7 @@ let package = Package(
   dependencies: [
     // Dependencies declare other packages that this package depends on.
     // .package(url: /* package url */, from: "1.0.0"),
+    .package(url: "https://github.com/apple/swift-docc-plugin.git", from: "1.0.0"),
     .package(url: "https://github.com/stleamist/BetterSafariView", from: "2.4.0"),
     .package(
       name: "KeychainSwift", url: "https://github.com/evgenyneu/keychain-swift", from: "20.0.0"),

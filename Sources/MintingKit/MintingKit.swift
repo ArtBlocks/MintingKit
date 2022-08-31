@@ -5,7 +5,8 @@ import LocalAuthentication
 import SwiftUI
 import SwiftyJSON
 
-let API_BASE_URL = "https://minting-api.artblocks.io"
+let API_BASE_URL_STRING = "https://minting-api.artblocks.io"
+let ENDPOINT_URL = URL(string: API_BASE_URL_STRING)!
 
 private enum LoginError: Error {
   case tokenError(String)
@@ -30,8 +31,11 @@ public struct MKMinting {
 
 public struct MintingKit {
   let token: String
-  let endpoint = URL(string: API_BASE_URL)!
 
+  /**
+   Constructs HTTP heards for authentication and data type to make HTTP REST API calls.
+   - Returns: A new HTTPHeaders object to be used in HTTP requests
+  */
   private func buildHeaders() -> HTTPHeaders {
     return [
       "Authorization": "Token \(token)",
@@ -39,10 +43,15 @@ public struct MintingKit {
     ]
   }
 
+  /**
+   Retrieves a list of Art Blocks projects available to the currently authenticated machine.
+   - Parameter onSuccess: The callback function to handle the retrieved array of MKProject objects
+   - Parameter onFailure: The callback function to handle REST API errors
+   */
   public func listProjects(
     onSuccess: @escaping ([MKProject]) -> Void, onFailure: @escaping (Error) -> Void
   ) {
-    AF.request(endpoint.appendingPathComponent("project"), method: .get, headers: buildHeaders())
+    AF.request(ENDPOINT_URL.appendingPathComponent("project"), method: .get, headers: buildHeaders())
       .validate().responseJSON { response in
         switch response.result {
         case .success(let value):
@@ -57,12 +66,18 @@ public struct MintingKit {
       }
   }
 
+  /**
+   Looks up the full Ethereum address for a provided ENS name.
+   - Parameter ensName: The ENS name to look up e.g. artblocks.eth
+   - Parameter onSuccess: The callback function to handle the retrieved Ethereum address string
+   - Parameter onFailure: The callback function to handle REST API errors
+  */
   public func ensLookup(
     ensName: String,
     onSuccess: @escaping (String) -> Void, onFailure: @escaping (Error) -> Void
   ) {
     AF.request(
-      endpoint.appendingPathComponent("wallet/ens?ens_name=\(ensName)"), method: .get,
+      ENDPOINT_URL.appendingPathComponent("wallet/ens?ens_name=\(ensName)"), method: .get,
       headers: buildHeaders()
     ).validate().responseJSON { response in
       switch response.result {
@@ -79,6 +94,12 @@ public struct MintingKit {
     }
   }
 
+  /**
+   Verifies that a particular project can be minted by the currently authenticated machine.
+   - Parameter projectId: the full string ID of the project being minted
+   - Parameter onSuccess: The callback function to handle the retrieved status of the project
+   - Parameter onFailure: The callback function to handle REST API errors
+   */
   public func checkIfMintable(
     projectId: String,
     onSuccess: @escaping (Bool, String) -> Void, onFailure: @escaping (Error) -> Void
@@ -89,7 +110,7 @@ public struct MintingKit {
     ]
     DispatchQueue.main.async {
       AF.request(
-        endpoint.appendingPathComponent("project/\(projectId)/mintable"), method: .get,
+        ENDPOINT_URL.appendingPathComponent("project/\(projectId)/mintable"), method: .get,
         headers: headers
       ).validate().responseJSON { response in
         switch response.result {
@@ -103,6 +124,12 @@ public struct MintingKit {
     }
   }
 
+  /**
+   Mint a project using the Art Blocks Minting API.
+   - Parameter projectId: the full string ID of the project being minted
+   - Parameter onSuccess: The callback function to handle the string ID of the new mint
+   - Parameter onFailure: The callback function to handle REST API errors
+  */
   public func mintProject(
     projectId: String, walletAddress: String,
     onSuccess: @escaping (String) -> Void,
@@ -119,7 +146,7 @@ public struct MintingKit {
       ]
 
       AF.request(
-        endpoint.appendingPathComponent("minting"),
+        ENDPOINT_URL.appendingPathComponent("minting"),
         method: .post, parameters: parameters, encoding: JSONEncoding.default,
         headers: headers
       ).validate().responseJSON { response in
@@ -134,6 +161,12 @@ public struct MintingKit {
     }
   }
 
+  /**
+   Retrieves the latest transaction information for a previous or ongoing minting.
+   - Parameter mintId: The string ID of the minting to retrieve
+   - Parameter onSuccess: The callback function to handle the retrieved MKMinting object
+   - Parameter onFailure: The callback function to handle REST API errors
+     */
   public func retrieveMinting(
     mintId: String,
     onSuccess: @escaping (MKMinting) -> Void,
@@ -145,7 +178,7 @@ public struct MintingKit {
     ]
     DispatchQueue.main.async {
       AF.request(
-        endpoint.appendingPathComponent("minting/\(mintId)"), method: .get, headers: headers
+        ENDPOINT_URL.appendingPathComponent("minting/\(mintId)"), method: .get, headers: headers
       ).validate().responseJSON {
         response in
         switch response.result {
@@ -175,6 +208,10 @@ public struct MintingKit {
   }
 }
 
+/**
+ A login button that signs in the current iOS user into the Minting API.
+ 
+ */
 public struct MintingLoginButton<Label: View>: View {
   @State private var startingWebAuthenticationSession = false
   let keychain = KeychainSwift()
@@ -234,7 +271,7 @@ public struct MintingLoginButton<Label: View>: View {
     }
     .webAuthenticationSession(isPresented: $startingWebAuthenticationSession) {
       WebAuthenticationSession(
-        url: endpoint.appendingPathComponent("app/?appauth=true"),
+        url: ENDPOINT_URL.appendingPathComponent("app/?appauth=true"),
         callbackURLScheme: "txlessauth"
       ) { callbackURL, error in
         if let t = callbackURL?.host {
