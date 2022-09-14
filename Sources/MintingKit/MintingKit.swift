@@ -8,7 +8,7 @@ let API_BASE_URL_STRING = "https://minting-api.artblocks.io"
 let ENDPOINT_URL = URL(string: API_BASE_URL_STRING)!
 let RENDER_BLOCK_CONFIRMATIONS = 3  // number of block confirmations before rendering
 
-public enum MintingKitError: Error {
+public enum MKError: Error {
   case malformedURL(String)
   case ensNotFound(String)
   case tokenError(String)
@@ -16,7 +16,7 @@ public enum MintingKitError: Error {
 }
 
 /// Data structure describing a mintable Art Blocks project
-public struct MintingKitProject: Codable {
+public struct MKProject: Codable {
   /// The string ID of the project available for minting
   let id: String
 
@@ -25,7 +25,7 @@ public struct MintingKitProject: Codable {
 }
 
 private struct ProjectListResults: Decodable {
-  let results: [MintingKitProject]
+  let results: [MKProject]
 }
 
 private struct ENSLookupResult: Decodable {
@@ -38,7 +38,7 @@ private struct IsMintableResult: Decodable {
 }
 
 /// Data structure describing a single minting transaction and its current status
-public struct MintingKitMinting: Codable {
+public struct MKMinting: Codable {
   /// The primary key ID of the mint
   let id: String
 
@@ -75,7 +75,7 @@ public struct MintingKit {
    - Parameter onFailure: The callback function to handle REST API errors
    */
   public func listProjects(
-    onSuccess: @escaping ([MintingKitProject]) -> Void, onFailure: @escaping (Error) -> Void
+    onSuccess: @escaping ([MKProject]) -> Void, onFailure: @escaping (Error) -> Void
   ) {
     AF.request(
       ENDPOINT_URL.appendingPathComponent("project"), method: .get, headers: buildHeaders()
@@ -111,7 +111,7 @@ public struct MintingKit {
         if let ethAddress = value.ethAddress {
           onSuccess(ethAddress)
         } else {
-          onFailure(MintingKitError.ensNotFound("Unable to find ENS name: \(ensName)"))
+          onFailure(MKError.ensNotFound("Unable to find ENS name: \(ensName)"))
         }
       case .failure(let error):
         onFailure(error)
@@ -173,7 +173,7 @@ public struct MintingKit {
         ENDPOINT_URL.appendingPathComponent("minting"),
         method: .post, parameters: parameters, encoding: JSONEncoding.default,
         headers: headers
-      ).validate().responseDecodable(of: MintingKitMinting.self) { response in
+      ).validate().responseDecodable(of: MKMinting.self) { response in
         switch response.result {
         case .success(let value):
           onSuccess(value.id)
@@ -186,19 +186,19 @@ public struct MintingKit {
 
   public func onMintingUpdate(
     mintId: String,
-    onUpdate: @escaping (MintingKitMinting) -> Void,
+    onUpdate: @escaping (MKMinting) -> Void,
     onError: @escaping (Error) -> Void
   ) {
     guard var urlComponents = URLComponents(url: ENDPOINT_URL, resolvingAgainstBaseURL: false)
     else {
       // this error is typically unreachable - something went wrong with the Swift internal URL construction API
-      onError(MintingKitError.malformedURL("Unable to construct URL for API calls."))
+      onError(MKError.malformedURL("Unable to construct URL for API calls."))
       return
     }
     urlComponents.scheme = "ws"
     guard let url = try? urlComponents.asURL().appendingPathComponent("ws/minting/\(mintId)") else {
       // this error is typically unreachable - something went wrong with the Swift internal URL construction API
-      onError(MintingKitError.malformedURL("Unable to construct URL for API calls."))
+      onError(MKError.malformedURL("Unable to construct URL for API calls."))
       return
     }
     var request = URLRequest(url: url)
@@ -216,7 +216,7 @@ public struct MintingKit {
         case .data(let data):
           print(data.description)
         default:
-          onError(MintingKitError.socketError("Unknown type received from WebSocket"))
+          onError(MKError.socketError("Unknown type received from WebSocket"))
         }
       }
     }
@@ -231,7 +231,7 @@ public struct MintingKit {
      */
   public func retrieveMinting(
     mintId: String,
-    onSuccess: @escaping (MintingKitMinting) -> Void,
+    onSuccess: @escaping (MKMinting) -> Void,
     onFailure: @escaping (Error) -> Void
   ) {
     let headers: HTTPHeaders = [
@@ -241,7 +241,7 @@ public struct MintingKit {
     DispatchQueue.main.async {
       AF.request(
         ENDPOINT_URL.appendingPathComponent("minting/\(mintId)"), method: .get, headers: headers
-      ).validate().responseDecodable(of: MintingKitMinting.self) {
+      ).validate().responseDecodable(of: MKMinting.self) {
         response in
         switch response.result {
         case .success(let value):
@@ -327,7 +327,7 @@ public struct MintingLoginButton<Label: View>: View {
         } else if let error = error {
           onFailure(error)
         } else {
-          onFailure(MintingKitError.tokenError("Unable to retrieve token from login screen."))
+          onFailure(MKError.tokenError("Unable to retrieve token from login screen."))
         }
       }
     }
