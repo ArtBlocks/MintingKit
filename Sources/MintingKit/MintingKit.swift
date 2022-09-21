@@ -20,7 +20,7 @@ public enum MKError: Error {
 public struct MKProject: Codable {
   /// The string ID of the project available for minting
   let id: String
-
+  
   /// The string title of the project available for minting
   let title: String
 }
@@ -45,38 +45,38 @@ private struct IsMintableResult: Decodable {
 public struct MKMinting: Codable {
   /// The primary key ID of the mint
   let id: String
-
+  
   /// The number of block confirmations for the minting transaction
   var blockConfirmations: Int?
-
+  
   /// The shareable URL for the artwork that the user can send to others
   var shareUrl: String?
-
+  
   /// The generator URL that can be placed in an iframe or WebView to display the artwork
   var embedUrl: String?
-
+  
   /// Whether or not the minting fee has been paid in fiat
   var isPaid: Bool?
 }
 
 /**
-Provides an SDK for quickly deploying apps built on top of the Art Blocks Minting API.
+ Provides an SDK for quickly deploying apps built on top of the Art Blocks Minting API.
  - Parameter token: The authentication token for the current user
  */
 public struct MintingKit {
   let token: String
-
+  
   /**
    Constructs HTTP heards for authentication and data type to make HTTP REST API calls.
    - Returns: A new HTTPHeaders object to be used in HTTP requests
-  */
+   */
   private func buildHeaders() -> HTTPHeaders {
     return [
       "Authorization": "Token \(token)",
       "Accept": "application/json",
     ]
   }
-
+  
   /**
    Retrieves a list of Art Blocks projects available to the currently authenticated machine.
    - Parameter onSuccess: The callback function to handle the retrieved array of MKProject objects
@@ -99,13 +99,13 @@ public struct MintingKit {
       }
     }
   }
-
+  
   /**
    Looks up the full Ethereum address for a provided ENS name.
    - Parameter ensName: The ENS name to look up e.g. artblocks.eth
    - Parameter onSuccess: The callback function to handle the retrieved Ethereum address string
    - Parameter onFailure: The callback function to handle REST API errors
-  */
+   */
   public func ensLookup(
     ensName: String,
     onSuccess: @escaping (String) -> Void, onFailure: @escaping (Error) -> Void
@@ -126,7 +126,7 @@ public struct MintingKit {
       }
     }
   }
-
+  
   /**
    Verifies that a project can be minted by the currently authenticated machine.
    - Parameter projectId: the full string ID of the project being minted
@@ -155,13 +155,13 @@ public struct MintingKit {
       }
     }
   }
-
+  
   /**
    Mint a project using the Art Blocks Minting API.
    - Parameter projectId: the full string ID of the project being minted
    - Parameter onSuccess: The callback function to handle the string ID of the new mint
    - Parameter onFailure: The callback function to handle REST API errors
-  */
+   */
   public func mintProject(
     projectId: String, walletAddress: String,
     onSuccess: @escaping (String) -> Void,
@@ -176,7 +176,7 @@ public struct MintingKit {
         "destination_wallet": walletAddress,
         "project": projectId,
       ]
-
+      
       AF.request(
         ENDPOINT_URL.appendingPathComponent("minting"),
         method: .post, parameters: parameters, encoding: JSONEncoding.default,
@@ -191,7 +191,7 @@ public struct MintingKit {
       }
     }
   }
-
+  
   public func onMintingUpdate(
     mintId: String,
     onUpdate: @escaping (MKMinting) -> Void,
@@ -230,13 +230,13 @@ public struct MintingKit {
     }
     socket.receive(completionHandler: onMintingSocketReceive)
   }
-
+  
   /**
    Retrieves the latest transaction information for a previous or ongoing minting.
    - Parameter mintId: The string ID of the minting to retrieve
    - Parameter onSuccess: The callback function to handle the retrieved MKMinting object
    - Parameter onFailure: The callback function to handle REST API errors
-     */
+   */
   public func retrieveMinting(
     mintId: String,
     onSuccess: @escaping (MKMinting) -> Void,
@@ -269,7 +269,7 @@ public struct MintingLoginButton<Label: View>: View {
   let label: Label
   let onSuccess: (String) -> Void
   let onFailure: (Error) -> Void
-
+  
   init(
     onSuccess: @escaping (String) -> Void, onFailure: @escaping (Error) -> Void,
     @ViewBuilder label: () -> Label
@@ -278,7 +278,7 @@ public struct MintingLoginButton<Label: View>: View {
     self.onSuccess = onSuccess
     self.onFailure = onFailure
   }
-
+  
   public var body: some View {
     Button(action: { startingWebAuthenticationSession = true }) {
       label
@@ -298,12 +298,12 @@ public struct MintingLoginButton<Label: View>: View {
         if let t = keychain.get("authToken") {
           let context = LAContext()
           var error: NSError?
-
+          
           // check whether biometric authentication is possible
           if context.canEvaluatePolicy(.deviceOwnerAuthenticationWithBiometrics, error: &error) {
             // it's possible, so go ahead and use it
             let reason = "We need to unlock your data."
-
+            
             context.evaluatePolicy(
               .deviceOwnerAuthenticationWithBiometrics, localizedReason: reason
             ) { success, authenticationError in
