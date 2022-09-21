@@ -8,6 +8,7 @@ let API_BASE_URL_STRING = "https://minting-api.artblocks.io"
 let ENDPOINT_URL = URL(string: API_BASE_URL_STRING)!
 let RENDER_BLOCK_CONFIRMATIONS = 3  // number of block confirmations before rendering
 
+/// Enumerates errors specific to the state of the MintingKit SDK
 public enum MKError: Error {
   case malformedURL(String)
   case ensNotFound(String)
@@ -24,14 +25,17 @@ public struct MKProject: Codable {
   let title: String
 }
 
+/// Provides a decodable structure for the project list API JSON response
 private struct ProjectListResults: Decodable {
   let results: [MKProject]
 }
 
+/// Provides a decodable structure for the ENS lookup API JSON response
 private struct ENSLookupResult: Decodable {
   let ethAddress: String?
 }
 
+/// Provides a decodable structure for the "is mintable" API JSON response
 private struct IsMintableResult: Decodable {
   let mintable: Bool
   let message: String
@@ -55,6 +59,10 @@ public struct MKMinting: Codable {
   var isPaid: Bool?
 }
 
+/**
+Provides an SDK for quickly deploying apps built on top of the Art Blocks Minting API.
+ - Parameter token: The authentication token for the current user
+ */
 public struct MintingKit {
   let token: String
 
@@ -255,7 +263,6 @@ public struct MintingKit {
 }
 
 /// A login button that signs in the current iOS user into the Minting API.
-
 public struct MintingLoginButton<Label: View>: View {
   @State private var startingWebAuthenticationSession = false
   let keychain = KeychainSwift()
