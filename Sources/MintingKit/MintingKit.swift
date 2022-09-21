@@ -3,22 +3,28 @@ import BetterSafariView
 import KeychainSwift
 import LocalAuthentication
 import SwiftUI
-import SwiftyJSON
 
 let API_BASE_URL_STRING = "https://minting-api.artblocks.io"
 let ENDPOINT_URL = URL(string: API_BASE_URL_STRING)!
 let RENDER_BLOCK_CONFIRMATIONS = 3  // number of block confirmations before rendering
 
-private enum LoginError: Error {
-  case tokenError(String)
-}
+/// Enumerates errors specific to the state of the MintingKit SDK
+public enum MKError: Error {
+  /// Thrown when an API URL is incorrectly configured
+  case malformedURL(String)
 
-private enum ENSError: Error {
+  /// Thrown when an ENS name is not found
   case ensNotFound(String)
+
+  /// Thrown when an error occurs during token minting
+  case tokenError(String)
+
+  /// Thrown when a websocket connection fails
+  case socketError(String)
 }
 
 /// Data structure describing a mintable Art Blocks project
-public struct MKProject {
+public struct MKProject: Codable {
   /// The string ID of the project available for minting
   let id: String
 
@@ -26,8 +32,32 @@ public struct MKProject {
   let title: String
 }
 
+/// Provides a decodable structure for the project list API JSON response
+private struct ProjectListResults: Decodable {
+  /// The list of projects returned from the API
+  let results: [MKProject]
+}
+
+/// Provides a decodable structure for the ENS lookup API JSON response
+private struct ENSLookupResult: Decodable {
+  /// The ETH address corresponding to the ENS name
+  let ethAddress: String?
+}
+
+/// Provides a decodable structure for the "is mintable" API JSON response
+private struct IsMintableResult: Decodable {
+  /// Whether or not the project can be minted
+  let mintable: Bool
+
+  /// A status message indicating the current state of the project
+  let message: String
+}
+
 /// Data structure describing a single minting transaction and its current status
-public struct MKMinting {
+public struct MKMinting: Codable {
+  /// The primary key ID of the mint
+  let id: String
+
   /// The number of block confirmations for the minting transaction
   var blockConfirmations: Int?
 
@@ -37,20 +67,22 @@ public struct MKMinting {
   /// The generator URL that can be placed in an iframe or WebView to display the artwork
   var embedUrl: String?
 
-  /// The full data of the Ethereum transaction receipt
-  var receipt: JSON?
-
   /// Whether or not the minting fee has been paid in fiat
   var isPaid: Bool?
 }
 
+/**
+ Provides an SDK for quickly deploying apps built on top of the Art Blocks Minting API.
+ - Parameter token: The authentication token for the current user
+ */
 public struct MintingKit {
+  /// The API token obtaiend for the currently-authenticated user
   let token: String
 
   /**
    Constructs HTTP heards for authentication and data type to make HTTP REST API calls.
    - Returns: A new HTTPHeaders object to be used in HTTP requests
-  */
+   */
   private func buildHeaders() -> HTTPHeaders {
     return [
       "Authorization": "Token \(token)",
@@ -69,14 +101,12 @@ public struct MintingKit {
     AF.request(
       ENDPOINT_URL.appendingPathComponent("project"), method: .get, headers: buildHeaders()
     )
-    .validate().responseJSON { response in
+    .validate().responseDecodable(of: ProjectListResults.self) { response in
       switch response.result {
       case .success(let value):
-        let json = JSON(value)["results"].arrayValue
-        let projects = json.map { project in
-          return MKProject(id: project["id"].stringValue, title: project["title"].stringValue)
-        }
-        onSuccess(projects)
+        let decoder = JSONDecoder()
+        decoder.keyDecodingStrategy = .convertFromSnakeCase
+        onSuccess(value.results)
       case .failure(let error):
         onFailure(error)
       }
@@ -88,7 +118,7 @@ public struct MintingKit {
    - Parameter ensName: The ENS name to look up e.g. artblocks.eth
    - Parameter onSuccess: The callback function to handle the retrieved Ethereum address string
    - Parameter onFailure: The callback function to handle REST API errors
-  */
+   */
   public func ensLookup(
     ensName: String,
     onSuccess: @escaping (String) -> Void, onFailure: @escaping (Error) -> Void
@@ -96,14 +126,13 @@ public struct MintingKit {
     AF.request(
       ENDPOINT_URL.appendingPathComponent("wallet/ens?ens_name=\(ensName)"), method: .get,
       headers: buildHeaders()
-    ).validate().responseJSON { response in
+    ).validate().responseDecodable(of: ENSLookupResult.self) { response in
       switch response.result {
       case .success(let value):
-        let json = JSON(value)
-        if let ethAddress = json["eth_address"].string {
+        if let ethAddress = value.ethAddress {
           onSuccess(ethAddress)
         } else {
-          onFailure(ENSError.ensNotFound("Unable to find ENS name: \(ensName)"))
+          onFailure(MKError.ensNotFound("Unable to find ENS name: \(ensName)"))
         }
       case .failure(let error):
         onFailure(error)
@@ -129,11 +158,10 @@ public struct MintingKit {
       AF.request(
         ENDPOINT_URL.appendingPathComponent("project/\(projectId)/mintable"), method: .get,
         headers: headers
-      ).validate().responseJSON { response in
+      ).validate().responseDecodable(of: IsMintableResult.self) { response in
         switch response.result {
         case .success(let value):
-          let json = JSON(value)
-          onSuccess(json["mintable"].boolValue, json["message"].stringValue)
+          onSuccess(value.mintable, value.message)
         case .failure(let error):
           onFailure(error)
         }
@@ -146,7 +174,7 @@ public struct MintingKit {
    - Parameter projectId: the full string ID of the project being minted
    - Parameter onSuccess: The callback function to handle the string ID of the new mint
    - Parameter onFailure: The callback function to handle REST API errors
-  */
+   */
   public func mintProject(
     projectId: String, walletAddress: String,
     onSuccess: @escaping (String) -> Void,
@@ -166,11 +194,10 @@ public struct MintingKit {
         ENDPOINT_URL.appendingPathComponent("minting"),
         method: .post, parameters: parameters, encoding: JSONEncoding.default,
         headers: headers
-      ).validate().responseJSON { response in
+      ).validate().responseDecodable(of: MKMinting.self) { response in
         switch response.result {
         case .success(let value):
-          let json = JSON(value)
-          onSuccess(json["id"].stringValue)
+          onSuccess(value.id)
         case .failure(let error):
           onFailure(error)
         }
@@ -178,12 +205,51 @@ public struct MintingKit {
     }
   }
 
+  public func onMintingUpdate(
+    mintId: String,
+    onUpdate: @escaping (MKMinting) -> Void,
+    onError: @escaping (Error) -> Void
+  ) {
+    guard var urlComponents = URLComponents(url: ENDPOINT_URL, resolvingAgainstBaseURL: false)
+    else {
+      // this error is typically unreachable - something went wrong with the Swift internal URL construction API
+      onError(MKError.malformedURL("Unable to construct URL for API calls."))
+      return
+    }
+    urlComponents.scheme = "ws"  // use a websocket connection scheme instead of https
+    guard let url = try? urlComponents.asURL().appendingPathComponent("ws/minting/\(mintId)") else {
+      // this error is typically unreachable - something went wrong with the Swift internal URL construction API
+      onError(MKError.malformedURL("Unable to construct URL for API calls."))
+      return
+    }
+    var request = URLRequest(url: url)
+    let session = URLSession(configuration: .default)
+    let socket = session.webSocketTask(with: request)
+    socket.resume()
+    func onMintingSocketReceive(result: Result<Foundation.URLSessionWebSocketTask.Message, Error>) {
+      switch result {
+      case .failure(let error):
+        onError(error)
+      case .success(let message):
+        switch message {
+        case .string(let messageString):
+          print(messageString)
+        case .data(let data):
+          print(data.description)
+        default:
+          onError(MKError.socketError("Unknown type received from WebSocket"))
+        }
+      }
+    }
+    socket.receive(completionHandler: onMintingSocketReceive)
+  }
+
   /**
    Retrieves the latest transaction information for a previous or ongoing minting.
    - Parameter mintId: The string ID of the minting to retrieve
    - Parameter onSuccess: The callback function to handle the retrieved MKMinting object
    - Parameter onFailure: The callback function to handle REST API errors
-     */
+   */
   public func retrieveMinting(
     mintId: String,
     onSuccess: @escaping (MKMinting) -> Void,
@@ -196,29 +262,11 @@ public struct MintingKit {
     DispatchQueue.main.async {
       AF.request(
         ENDPOINT_URL.appendingPathComponent("minting/\(mintId)"), method: .get, headers: headers
-      ).validate().responseJSON {
+      ).validate().responseDecodable(of: MKMinting.self) {
         response in
         switch response.result {
         case .success(let value):
-          let json = JSON(value)
-          var mint = MKMinting()
-          if let confirmations = json["block_confirmations"].int {
-            mint.blockConfirmations = confirmations
-          }
-          if let shareUrlString = json["share_url"].string {
-            mint.shareUrl = shareUrlString
-          }
-          if let urlString = json["embed_url"].string {
-            if let currentConfirmations = mint.blockConfirmations {
-              if currentConfirmations >= RENDER_BLOCK_CONFIRMATIONS {
-                mint.embedUrl = urlString
-              }
-            }
-          }
-          mint.receipt = json["receipt"]
-
-          mint.isPaid = json["is_paid"].bool
-          onSuccess(mint)
+          onSuccess(value)
         case .failure(let error):
           onFailure(error)
         }
@@ -228,7 +276,6 @@ public struct MintingKit {
 }
 
 /// A login button that signs in the current iOS user into the Minting API.
-
 public struct MintingLoginButton<Label: View>: View {
   @State private var startingWebAuthenticationSession = false
   let keychain = KeychainSwift()
@@ -300,7 +347,7 @@ public struct MintingLoginButton<Label: View>: View {
         } else if let error = error {
           onFailure(error)
         } else {
-          onFailure(LoginError.tokenError("Unable to retrieve token from login screen."))
+          onFailure(MKError.tokenError("Unable to retrieve token from login screen."))
         }
       }
     }
