@@ -216,7 +216,7 @@ public struct MintingKit {
       onError(MKError.malformedURL("Unable to construct URL for API calls."))
       return
     }
-    urlComponents.scheme = "ws"
+    urlComponents.scheme = "ws"  // use a websocket connection scheme instead of https
     guard let url = try? urlComponents.asURL().appendingPathComponent("ws/minting/\(mintId)") else {
       // this error is typically unreachable - something went wrong with the Swift internal URL construction API
       onError(MKError.malformedURL("Unable to construct URL for API calls."))
