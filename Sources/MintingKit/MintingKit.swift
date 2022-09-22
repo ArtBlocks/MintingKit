@@ -73,11 +73,11 @@ public struct MKMinting: Codable {
 
 /**
  Provides an SDK for quickly deploying apps built on top of the Art Blocks Minting API.
- - Parameter token: The authentication token for the current user
+ - Parameter authToken: The authentication token for the current user
  */
 public struct MintingKit {
   /// The API token obtaiend for the currently-authenticated user
-  let token: String
+  let authToken: String
 
   /**
    Constructs HTTP heards for authentication and data type to make HTTP REST API calls.
@@ -85,7 +85,7 @@ public struct MintingKit {
    */
   private func buildHeaders() -> HTTPHeaders {
     return [
-      "Authorization": "Token \(token)",
+      "Authorization": "Token \(authToken)",
       "Accept": "application/json",
     ]
   }
@@ -151,7 +151,7 @@ public struct MintingKit {
     onSuccess: @escaping (Bool, String) -> Void, onFailure: @escaping (Error) -> Void
   ) {
     let headers: HTTPHeaders = [
-      "Authorization": "Token " + token,
+      "Authorization": "Token " + authToken,
       "Accept": "application/json",
     ]
     DispatchQueue.main.async {
@@ -182,7 +182,7 @@ public struct MintingKit {
   ) {
     DispatchQueue.main.async {
       let headers: HTTPHeaders = [
-        "Authorization": "Token " + token,
+        "Authorization": "Token " + authToken,
         "Accept": "application/json",
       ]
       let parameters: [String: String] = [
@@ -256,7 +256,7 @@ public struct MintingKit {
     onFailure: @escaping (Error) -> Void
   ) {
     let headers: HTTPHeaders = [
-      "Authorization": "Token \(token)",
+      "Authorization": "Token \(authToken)",
       "Accept": "application/json",
     ]
     DispatchQueue.main.async {
