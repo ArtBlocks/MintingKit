@@ -1,5 +1,9 @@
 # MintingKit: Swift5 Minting API Client
 
+## Repository Status: Public Beta
+
+This code contains rapidly-changing API's, but also uses semantic versioning. Please pin the major version of the SDK you use to minimize breaking changes.
+
 This documentation provides examples and information for implementing client applications for the Powered by Art Blocks Minting Machine API.
 
 Before you can consume the API, you will need a user account. If you have any questions or need help setting up your account, join our Discord.
@@ -25,3 +29,4 @@ To get started developing this repository, you will need to perform these steps 
 4. Install pre-commit hooks: `pre-commit install`
 
 Once you have the development environment set up, you can commit code changes and run tests.
+
