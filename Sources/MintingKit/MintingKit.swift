@@ -6,7 +6,7 @@ import SwiftUI
 
 let API_BASE_URL_STRING = "https://minting-api.artblocks.io"
 let ENDPOINT_URL = URL(string: API_BASE_URL_STRING)!
-let RENDER_BLOCK_CONFIRMATIONS = 3  // number of block confirmations before rendering
+public let version = "0.1.0"
 
 /// Enumerates errors specific to the state of the MintingKit SDK
 public enum MKError: Error {
@@ -30,6 +30,9 @@ public struct MKProject: Codable {
 
   /// The string title of the project available for minting
   let title: String
+
+  /// The number of block confirmations required for the project to render
+  let requiredConfirmations: Int
 }
 
 /// Provides a decodable structure for the project list API JSON response
@@ -68,7 +71,7 @@ public struct MKMinting: Codable {
   var embedUrl: String?
 
   /// Whether or not the minting fee has been paid in fiat
-  var isPaid: Bool?
+  var isPaid: Bool = false
 }
 
 /**
@@ -87,6 +90,7 @@ public struct MintingKit {
     return [
       "Authorization": "Token \(authToken)",
       "Accept": "application/json",
+      "User-Agent": "MintingKit/\(version)",
     ]
   }
 
