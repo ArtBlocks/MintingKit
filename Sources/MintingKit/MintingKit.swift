@@ -198,8 +198,6 @@ public struct MintingKit {
     onSuccess: @escaping (String) -> Void,
     onFailure: @escaping (Error) -> Void
   ) {
-    let decoder = JSONDecoder()
-    decoder.keyDecodingStrategy = .convertFromSnakeCase
     DispatchQueue.main.async {
       let headers: HTTPHeaders = [
         "Authorization": "Token " + authToken,
@@ -214,7 +212,7 @@ public struct MintingKit {
         ENDPOINT_URL.appendingPathComponent("minting"),
         method: .post, parameters: parameters, encoding: JSONEncoding.default,
         headers: headers
-      ).validate().responseDecodable(of: MKMinting.self, decoder: decoder) { response in
+      ).validate().responseDecodable(of: MKMinting.self) { response in
         switch response.result {
         case .success(let value):
           onSuccess(value.id)
