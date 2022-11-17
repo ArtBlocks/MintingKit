@@ -72,6 +72,14 @@ public struct MKMinting: Codable {
 
   /// Whether or not the minting fee has been paid in fiat
   var isPaid: Bool = false
+
+  enum CodingKeys: String, CodingKey {
+    case id = "id"
+    case blockConfirmations = "block_confirmations"
+    case shareUrl = "share_url"
+    case embedUrl = "embed_url"
+    case isPaid = "is_paid"
+  }
 }
 
 /// Provides an SDK for quickly deploying apps built on top of the Art Blocks Minting API.
