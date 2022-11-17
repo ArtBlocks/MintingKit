@@ -108,14 +108,14 @@ public struct MintingKit {
   public func listProjects(
     onSuccess: @escaping ([MKProject]) -> Void, onFailure: @escaping (Error) -> Void
   ) {
+    let decoder = JSONDecoder()
+    decoder.keyDecodingStrategy = .convertFromSnakeCase
     AF.request(
       ENDPOINT_URL.appendingPathComponent("project"), method: .get, headers: buildHeaders()
     )
-    .validate().responseDecodable(of: ProjectListResults.self) { response in
+    .validate().responseDecodable(of: ProjectListResults.self, decoder: decoder) { response in
       switch response.result {
       case .success(let value):
-        let decoder = JSONDecoder()
-        decoder.keyDecodingStrategy = .convertFromSnakeCase
         onSuccess(value.results)
       case .failure(let error):
         onFailure(error)
@@ -190,6 +190,8 @@ public struct MintingKit {
     onSuccess: @escaping (String) -> Void,
     onFailure: @escaping (Error) -> Void
   ) {
+    let decoder = JSONDecoder()
+    decoder.keyDecodingStrategy = .convertFromSnakeCase
     DispatchQueue.main.async {
       let headers: HTTPHeaders = [
         "Authorization": "Token " + authToken,
@@ -204,7 +206,7 @@ public struct MintingKit {
         ENDPOINT_URL.appendingPathComponent("minting"),
         method: .post, parameters: parameters, encoding: JSONEncoding.default,
         headers: headers
-      ).validate().responseDecodable(of: MKMinting.self) { response in
+      ).validate().responseDecodable(of: MKMinting.self, decoder: decoder) { response in
         switch response.result {
         case .success(let value):
           onSuccess(value.id)
