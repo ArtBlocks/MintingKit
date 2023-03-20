@@ -1,0 +1,881 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 55;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		8B02BC2E2926961800177CC5 /* ImageModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B02BC2D2926961800177CC5 /* ImageModifier.swift */; };
+		8B02BC2F2926961800177CC5 /* ImageModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B02BC2D2926961800177CC5 /* ImageModifier.swift */; };
+		8B4421CD29B2553300157A65 /* ReaderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B4421CC29B2553300157A65 /* ReaderViewController.swift */; };
+		8B4421D029B2596100157A65 /* Static in Frameworks */ = {isa = PBXBuildFile; productRef = 8B4421CF29B2596100157A65 /* Static */; };
+		8B4421D229B259BF00157A65 /* ReaderDiscoveryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B4421D129B259BF00157A65 /* ReaderDiscoveryViewController.swift */; };
+		8B4421D429B259F500157A65 /* CancelableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B4421D329B259F500157A65 /* CancelableViewController.swift */; };
+		8B4421D629B25A1600157A65 /* CaptureMethod+String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B4421D529B25A1600157A65 /* CaptureMethod+String.swift */; };
+		8B4421F429B25A2B00157A65 /* RefundViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B4421D729B25A2800157A65 /* RefundViewController.swift */; };
+		8B4421F529B25A2B00157A65 /* SetupIntentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B4421D829B25A2800157A65 /* SetupIntentViewController.swift */; };
+		8B4421F629B25A2B00157A65 /* ReaderConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B4421D929B25A2900157A65 /* ReaderConfiguration.swift */; };
+		8B4421F729B25A2B00157A65 /* UpdateReaderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B4421DA29B25A2900157A65 /* UpdateReaderViewController.swift */; };
+		8B4421F929B25A2B00157A65 /* LogEventViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B4421DC29B25A2900157A65 /* LogEventViewController.swift */; };
+		8B4421FA29B25A2B00157A65 /* ifaddrs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B4421DD29B25A2900157A65 /* ifaddrs.swift */; };
+		8B4421FD29B25A2B00157A65 /* UIViewController+UIAlertController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B4421E029B25A2900157A65 /* UIViewController+UIAlertController.swift */; };
+		8B4421FE29B25A2B00157A65 /* RootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B4421E129B25A2900157A65 /* RootViewController.swift */; };
+		8B4421FF29B25A2B00157A65 /* UIView+Layout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B4421E229B25A2900157A65 /* UIView+Layout.swift */; };
+		8B44220029B25A2B00157A65 /* StripeCurrencies.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B4421E329B25A2900157A65 /* StripeCurrencies.swift */; };
+		8B44220129B25A2B00157A65 /* StartPaymentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B4421E429B25A2900157A65 /* StartPaymentViewController.swift */; };
+		8B44220229B25A2B00157A65 /* TableViewController+StripeTerminal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B4421E529B25A2900157A65 /* TableViewController+StripeTerminal.swift */; };
+		8B44220329B25A2B00157A65 /* StartSetReaderDisplayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B4421E629B25A2900157A65 /* StartSetReaderDisplayViewController.swift */; };
+		8B44220429B25A2B00157A65 /* Value1MultilineCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B4421E729B25A2A00157A65 /* Value1MultilineCell.swift */; };
+		8B44220529B25A2B00157A65 /* StartRefundViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B4421E829B25A2A00157A65 /* StartRefundViewController.swift */; };
+		8B44220629B25A2B00157A65 /* EventDisplayingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B4421E929B25A2A00157A65 /* EventDisplayingViewController.swift */; };
+		8B44220929B25A2B00157A65 /* ReaderHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B4421EC29B25A2A00157A65 /* ReaderHeaderView.swift */; };
+		8B44220A29B25A2B00157A65 /* StripeCountries.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B4421ED29B25A2A00157A65 /* StripeCountries.swift */; };
+		8B44220B29B25A2B00157A65 /* CustomViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B4421EE29B25A2A00157A65 /* CustomViews.swift */; };
+		8B44220C29B25A2B00157A65 /* PaymentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B4421EF29B25A2A00157A65 /* PaymentViewController.swift */; };
+		8B44220D29B25A2B00157A65 /* ReadReusableCardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B4421F029B25A2A00157A65 /* ReadReusableCardViewController.swift */; };
+		8B44220E29B25A2B00157A65 /* ReaderRegistrationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B4421F129B25A2A00157A65 /* ReaderRegistrationViewController.swift */; };
+		8B44220F29B25A2B00157A65 /* DiscoveryMethodViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B4421F229B25A2B00157A65 /* DiscoveryMethodViewController.swift */; };
+		8B44221029B25A2B00157A65 /* DelegateAnnouncer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B4421F329B25A2B00157A65 /* DelegateAnnouncer.swift */; };
+		8B7699C92947A435005EEF2B /* web3.swift in Frameworks */ = {isa = PBXBuildFile; productRef = 8B7699C82947A435005EEF2B /* web3.swift */; };
+		8BA24F5129254FAF00A72F31 /* BlockLoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BA24F5029254FAF00A72F31 /* BlockLoadingView.swift */; };
+		8BDA6A572925E378006261E6 /* Haptics.swift in Sources */ = {isa = PBXBuildFile; fileRef = A643D891286EFD8200C7208E /* Haptics.swift */; };
+		8BDA6A5D2925E389006261E6 /* ConfirmationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A643D88B286EEDF600C7208E /* ConfirmationView.swift */; };
+		8BF9606229B7AF4D008FFAE9 /* PaymentViewControllerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BF9606129B7AF4D008FFAE9 /* PaymentViewControllerView.swift */; };
+		8BFE812A2906F93000D577E9 /* MintingKit in Frameworks */ = {isa = PBXBuildFile; productRef = 8BFE81292906F93000D577E9 /* MintingKit */; };
+		A643D889286EEB5300C7208E /* KeychainSwiftDistrib.swift in Sources */ = {isa = PBXBuildFile; fileRef = A643D888286EEB5300C7208E /* KeychainSwiftDistrib.swift */; };
+		A643D88C286EEDF600C7208E /* ConfirmationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A643D88B286EEDF600C7208E /* ConfirmationView.swift */; };
+		A643D892286EFD8200C7208E /* Haptics.swift in Sources */ = {isa = PBXBuildFile; fileRef = A643D891286EFD8200C7208E /* Haptics.swift */; };
+		A64ECE8327E0DF8B0064CB4D /* Tests_iOS.swift in Sources */ = {isa = PBXBuildFile; fileRef = A64ECE8227E0DF8B0064CB4D /* Tests_iOS.swift */; };
+		A64ECE8527E0DF8B0064CB4D /* Tests_iOSLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A64ECE8427E0DF8B0064CB4D /* Tests_iOSLaunchTests.swift */; };
+		A64ECE9227E0DF8B0064CB4D /* TXLess_MintApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = A64ECE6A27E0DF890064CB4D /* TXLess_MintApp.swift */; };
+		A64ECE9427E0DF8B0064CB4D /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A64ECE6B27E0DF890064CB4D /* ContentView.swift */; };
+		A64ECE9627E0DF8B0064CB4D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A64ECE6C27E0DF8B0064CB4D /* Assets.xcassets */; };
+		A6562FFA2846B483008EC448 /* QRCode in Frameworks */ = {isa = PBXBuildFile; productRef = A6562FF92846B483008EC448 /* QRCode */; };
+		A6562FFB2846B580008EC448 /* QRCode in Embed Frameworks */ = {isa = PBXBuildFile; productRef = A6562FF92846B483008EC448 /* QRCode */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
+		A65BB29E283BFE110078D8E5 /* StripeTerminal in Frameworks */ = {isa = PBXBuildFile; productRef = A65BB29D283BFE110078D8E5 /* StripeTerminal */; };
+		A6AFC80F284022A8005BFC1A /* APIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6AFC80E284022A8005BFC1A /* APIClient.swift */; };
+		A6B47DC427E3E950009919E0 /* BetterSafariView in Frameworks */ = {isa = PBXBuildFile; productRef = A6B47DC327E3E950009919E0 /* BetterSafariView */; };
+		A6B47DCA27E3ECFF009919E0 /* CodeScanner in Frameworks */ = {isa = PBXBuildFile; productRef = A6B47DC927E3ECFF009919E0 /* CodeScanner */; };
+		A6B47DCE27E3ED3D009919E0 /* MintingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6B47DCD27E3ED3D009919E0 /* MintingView.swift */; };
+		A6B47DD127E3EE42009919E0 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6B47DD027E3EE42009919E0 /* LoginView.swift */; };
+		A6B47DD427E3F3AF009919E0 /* ProjectsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6B47DD327E3F3AF009919E0 /* ProjectsView.swift */; };
+		A6B47DD827E526F4009919E0 /* SwiftyJSON in Frameworks */ = {isa = PBXBuildFile; productRef = A6B47DD727E526F4009919E0 /* SwiftyJSON */; };
+		A6B47DDD27E52790009919E0 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = A6B47DDC27E52790009919E0 /* Alamofire */; };
+		A6B47DE127E53C8F009919E0 /* MintingEmbedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6B47DE027E53C8F009919E0 /* MintingEmbedView.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		A64ECE7F27E0DF8B0064CB4D /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = A64ECE6527E0DF890064CB4D /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = A64ECE7027E0DF8B0064CB4D;
+			remoteInfo = "TXLess Mint (iOS)";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		A6562FFC2846B580008EC448 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				A6562FFB2846B580008EC448 /* QRCode in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		8B02BC2D2926961800177CC5 /* ImageModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageModifier.swift; sourceTree = "<group>"; };
+		8B4421CC29B2553300157A65 /* ReaderViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReaderViewController.swift; sourceTree = "<group>"; };
+		8B4421D129B259BF00157A65 /* ReaderDiscoveryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReaderDiscoveryViewController.swift; sourceTree = "<group>"; };
+		8B4421D329B259F500157A65 /* CancelableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CancelableViewController.swift; sourceTree = "<group>"; };
+		8B4421D529B25A1600157A65 /* CaptureMethod+String.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CaptureMethod+String.swift"; sourceTree = "<group>"; };
+		8B4421D729B25A2800157A65 /* RefundViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RefundViewController.swift; sourceTree = "<group>"; };
+		8B4421D829B25A2800157A65 /* SetupIntentViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SetupIntentViewController.swift; sourceTree = "<group>"; };
+		8B4421D929B25A2900157A65 /* ReaderConfiguration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReaderConfiguration.swift; sourceTree = "<group>"; };
+		8B4421DA29B25A2900157A65 /* UpdateReaderViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UpdateReaderViewController.swift; sourceTree = "<group>"; };
+		8B4421DC29B25A2900157A65 /* LogEventViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LogEventViewController.swift; sourceTree = "<group>"; };
+		8B4421DD29B25A2900157A65 /* ifaddrs.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ifaddrs.swift; sourceTree = "<group>"; };
+		8B4421E029B25A2900157A65 /* UIViewController+UIAlertController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIViewController+UIAlertController.swift"; sourceTree = "<group>"; };
+		8B4421E129B25A2900157A65 /* RootViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RootViewController.swift; sourceTree = "<group>"; };
+		8B4421E229B25A2900157A65 /* UIView+Layout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+Layout.swift"; sourceTree = "<group>"; };
+		8B4421E329B25A2900157A65 /* StripeCurrencies.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StripeCurrencies.swift; sourceTree = "<group>"; };
+		8B4421E429B25A2900157A65 /* StartPaymentViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StartPaymentViewController.swift; sourceTree = "<group>"; };
+		8B4421E529B25A2900157A65 /* TableViewController+StripeTerminal.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "TableViewController+StripeTerminal.swift"; sourceTree = "<group>"; };
+		8B4421E629B25A2900157A65 /* StartSetReaderDisplayViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StartSetReaderDisplayViewController.swift; sourceTree = "<group>"; };
+		8B4421E729B25A2A00157A65 /* Value1MultilineCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Value1MultilineCell.swift; sourceTree = "<group>"; };
+		8B4421E829B25A2A00157A65 /* StartRefundViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StartRefundViewController.swift; sourceTree = "<group>"; };
+		8B4421E929B25A2A00157A65 /* EventDisplayingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventDisplayingViewController.swift; sourceTree = "<group>"; };
+		8B4421EC29B25A2A00157A65 /* ReaderHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReaderHeaderView.swift; sourceTree = "<group>"; };
+		8B4421ED29B25A2A00157A65 /* StripeCountries.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StripeCountries.swift; sourceTree = "<group>"; };
+		8B4421EE29B25A2A00157A65 /* CustomViews.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomViews.swift; sourceTree = "<group>"; };
+		8B4421EF29B25A2A00157A65 /* PaymentViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PaymentViewController.swift; sourceTree = "<group>"; };
+		8B4421F029B25A2A00157A65 /* ReadReusableCardViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReadReusableCardViewController.swift; sourceTree = "<group>"; };
+		8B4421F129B25A2A00157A65 /* ReaderRegistrationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReaderRegistrationViewController.swift; sourceTree = "<group>"; };
+		8B4421F229B25A2B00157A65 /* DiscoveryMethodViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DiscoveryMethodViewController.swift; sourceTree = "<group>"; };
+		8B4421F329B25A2B00157A65 /* DelegateAnnouncer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DelegateAnnouncer.swift; sourceTree = "<group>"; };
+		8BA24F5029254FAF00A72F31 /* BlockLoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlockLoadingView.swift; sourceTree = "<group>"; };
+		8BF9606129B7AF4D008FFAE9 /* PaymentViewControllerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentViewControllerView.swift; sourceTree = "<group>"; };
+		A643D888286EEB5300C7208E /* KeychainSwiftDistrib.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainSwiftDistrib.swift; sourceTree = "<group>"; };
+		A643D88B286EEDF600C7208E /* ConfirmationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfirmationView.swift; sourceTree = "<group>"; };
+		A643D891286EFD8200C7208E /* Haptics.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Haptics.swift; sourceTree = "<group>"; };
+		A64ECE6A27E0DF890064CB4D /* TXLess_MintApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TXLess_MintApp.swift; sourceTree = "<group>"; };
+		A64ECE6B27E0DF890064CB4D /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		A64ECE6C27E0DF8B0064CB4D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		A64ECE7127E0DF8B0064CB4D /* TXLess Mint.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "TXLess Mint.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		A64ECE7927E0DF8B0064CB4D /* macOS.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = macOS.entitlements; sourceTree = "<group>"; };
+		A64ECE7E27E0DF8B0064CB4D /* Tests iOS.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Tests iOS.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		A64ECE8227E0DF8B0064CB4D /* Tests_iOS.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tests_iOS.swift; sourceTree = "<group>"; };
+		A64ECE8427E0DF8B0064CB4D /* Tests_iOSLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tests_iOSLaunchTests.swift; sourceTree = "<group>"; };
+		A64ECE8E27E0DF8B0064CB4D /* Tests_macOS.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tests_macOS.swift; sourceTree = "<group>"; };
+		A64ECE9027E0DF8B0064CB4D /* Tests_macOSLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tests_macOSLaunchTests.swift; sourceTree = "<group>"; };
+		A6AFC80D28401C3D005BFC1A /* TXLess-Mint--iOS--Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "TXLess-Mint--iOS--Info.plist"; sourceTree = "<group>"; };
+		A6AFC80E284022A8005BFC1A /* APIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIClient.swift; sourceTree = "<group>"; };
+		A6B47DCD27E3ED3D009919E0 /* MintingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MintingView.swift; sourceTree = "<group>"; };
+		A6B47DD027E3EE42009919E0 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
+		A6B47DD327E3F3AF009919E0 /* ProjectsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectsView.swift; sourceTree = "<group>"; };
+		A6B47DE027E53C8F009919E0 /* MintingEmbedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MintingEmbedView.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		A64ECE6E27E0DF8B0064CB4D /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A6B47DD827E526F4009919E0 /* SwiftyJSON in Frameworks */,
+				A65BB29E283BFE110078D8E5 /* StripeTerminal in Frameworks */,
+				A6562FFA2846B483008EC448 /* QRCode in Frameworks */,
+				8BFE812A2906F93000D577E9 /* MintingKit in Frameworks */,
+				A6B47DDD27E52790009919E0 /* Alamofire in Frameworks */,
+				8B4421D029B2596100157A65 /* Static in Frameworks */,
+				A6B47DCA27E3ECFF009919E0 /* CodeScanner in Frameworks */,
+				8B7699C92947A435005EEF2B /* web3.swift in Frameworks */,
+				A6B47DC427E3E950009919E0 /* BetterSafariView in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A64ECE7B27E0DF8B0064CB4D /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		8B4421CB29B2543600157A65 /* Stripe */ = {
+			isa = PBXGroup;
+			children = (
+				A6AFC80E284022A8005BFC1A /* APIClient.swift */,
+				8B4421EC29B25A2A00157A65 /* ReaderHeaderView.swift */,
+				8B4421F129B25A2A00157A65 /* ReaderRegistrationViewController.swift */,
+				8B4421CC29B2553300157A65 /* ReaderViewController.swift */,
+				8B4421D529B25A1600157A65 /* CaptureMethod+String.swift */,
+				8B4421D329B259F500157A65 /* CancelableViewController.swift */,
+				8B4421EE29B25A2A00157A65 /* CustomViews.swift */,
+				8B4421F329B25A2B00157A65 /* DelegateAnnouncer.swift */,
+				8B4421F229B25A2B00157A65 /* DiscoveryMethodViewController.swift */,
+				8B4421E929B25A2A00157A65 /* EventDisplayingViewController.swift */,
+				8B4421DD29B25A2900157A65 /* ifaddrs.swift */,
+				8B4421DC29B25A2900157A65 /* LogEventViewController.swift */,
+				8B4421EF29B25A2A00157A65 /* PaymentViewController.swift */,
+				8B4421D929B25A2900157A65 /* ReaderConfiguration.swift */,
+				8B4421F029B25A2A00157A65 /* ReadReusableCardViewController.swift */,
+				8B4421D729B25A2800157A65 /* RefundViewController.swift */,
+				8B4421E129B25A2900157A65 /* RootViewController.swift */,
+				8B4421D829B25A2800157A65 /* SetupIntentViewController.swift */,
+				8B4421E429B25A2900157A65 /* StartPaymentViewController.swift */,
+				8B4421E829B25A2A00157A65 /* StartRefundViewController.swift */,
+				8B4421E629B25A2900157A65 /* StartSetReaderDisplayViewController.swift */,
+				8B4421ED29B25A2A00157A65 /* StripeCountries.swift */,
+				8B4421E329B25A2900157A65 /* StripeCurrencies.swift */,
+				8B4421E529B25A2900157A65 /* TableViewController+StripeTerminal.swift */,
+				8B4421E229B25A2900157A65 /* UIView+Layout.swift */,
+				8B4421E029B25A2900157A65 /* UIViewController+UIAlertController.swift */,
+				8B4421DA29B25A2900157A65 /* UpdateReaderViewController.swift */,
+				8B4421E729B25A2A00157A65 /* Value1MultilineCell.swift */,
+				8B4421D129B259BF00157A65 /* ReaderDiscoveryViewController.swift */,
+			);
+			path = Stripe;
+			sourceTree = "<group>";
+		};
+		8BF9606029B7AF3B008FFAE9 /* Payments */ = {
+			isa = PBXGroup;
+			children = (
+				8BF9606129B7AF4D008FFAE9 /* PaymentViewControllerView.swift */,
+			);
+			path = Payments;
+			sourceTree = "<group>";
+		};
+		A64ECE6427E0DF890064CB4D = {
+			isa = PBXGroup;
+			children = (
+				A6AFC80D28401C3D005BFC1A /* TXLess-Mint--iOS--Info.plist */,
+				A64ECE6927E0DF890064CB4D /* Shared */,
+				A64ECE7827E0DF8B0064CB4D /* macOS */,
+				A64ECE8127E0DF8B0064CB4D /* Tests iOS */,
+				A64ECE8D27E0DF8B0064CB4D /* Tests macOS */,
+				A64ECE7227E0DF8B0064CB4D /* Products */,
+				A6B47DC527E3EA8F009919E0 /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		A64ECE6927E0DF890064CB4D /* Shared */ = {
+			isa = PBXGroup;
+			children = (
+				8BF9606029B7AF3B008FFAE9 /* Payments */,
+				8B4421CB29B2543600157A65 /* Stripe */,
+				A64ECE6A27E0DF890064CB4D /* TXLess_MintApp.swift */,
+				A6B47DD327E3F3AF009919E0 /* ProjectsView.swift */,
+				A64ECE6B27E0DF890064CB4D /* ContentView.swift */,
+				A6B47DD027E3EE42009919E0 /* LoginView.swift */,
+				A64ECE6C27E0DF8B0064CB4D /* Assets.xcassets */,
+				A6B47DCD27E3ED3D009919E0 /* MintingView.swift */,
+				8BA24F5029254FAF00A72F31 /* BlockLoadingView.swift */,
+				A643D88B286EEDF600C7208E /* ConfirmationView.swift */,
+				A6B47DE027E53C8F009919E0 /* MintingEmbedView.swift */,
+				A643D888286EEB5300C7208E /* KeychainSwiftDistrib.swift */,
+				A643D891286EFD8200C7208E /* Haptics.swift */,
+				8B02BC2D2926961800177CC5 /* ImageModifier.swift */,
+			);
+			path = Shared;
+			sourceTree = "<group>";
+		};
+		A64ECE7227E0DF8B0064CB4D /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				A64ECE7127E0DF8B0064CB4D /* TXLess Mint.app */,
+				A64ECE7E27E0DF8B0064CB4D /* Tests iOS.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		A64ECE7827E0DF8B0064CB4D /* macOS */ = {
+			isa = PBXGroup;
+			children = (
+				A64ECE7927E0DF8B0064CB4D /* macOS.entitlements */,
+			);
+			path = macOS;
+			sourceTree = "<group>";
+		};
+		A64ECE8127E0DF8B0064CB4D /* Tests iOS */ = {
+			isa = PBXGroup;
+			children = (
+				A64ECE8227E0DF8B0064CB4D /* Tests_iOS.swift */,
+				A64ECE8427E0DF8B0064CB4D /* Tests_iOSLaunchTests.swift */,
+			);
+			path = "Tests iOS";
+			sourceTree = "<group>";
+		};
+		A64ECE8D27E0DF8B0064CB4D /* Tests macOS */ = {
+			isa = PBXGroup;
+			children = (
+				A64ECE8E27E0DF8B0064CB4D /* Tests_macOS.swift */,
+				A64ECE9027E0DF8B0064CB4D /* Tests_macOSLaunchTests.swift */,
+			);
+			path = "Tests macOS";
+			sourceTree = "<group>";
+		};
+		A6B47DC527E3EA8F009919E0 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		A64ECE7027E0DF8B0064CB4D /* MobileMinter */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A64ECE9A27E0DF8B0064CB4D /* Build configuration list for PBXNativeTarget "MobileMinter" */;
+			buildPhases = (
+				A64ECE6D27E0DF8B0064CB4D /* Sources */,
+				A64ECE6E27E0DF8B0064CB4D /* Frameworks */,
+				A64ECE6F27E0DF8B0064CB4D /* Resources */,
+				A6562FFC2846B580008EC448 /* Embed Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = MobileMinter;
+			packageProductDependencies = (
+				A6B47DC327E3E950009919E0 /* BetterSafariView */,
+				A6B47DC927E3ECFF009919E0 /* CodeScanner */,
+				A6B47DD727E526F4009919E0 /* SwiftyJSON */,
+				A6B47DDC27E52790009919E0 /* Alamofire */,
+				A65BB29D283BFE110078D8E5 /* StripeTerminal */,
+				A6562FF92846B483008EC448 /* QRCode */,
+				8BFE81292906F93000D577E9 /* MintingKit */,
+				8B7699C82947A435005EEF2B /* web3.swift */,
+				8B4421CF29B2596100157A65 /* Static */,
+			);
+			productName = "TXLess Mint (iOS)";
+			productReference = A64ECE7127E0DF8B0064CB4D /* TXLess Mint.app */;
+			productType = "com.apple.product-type.application";
+		};
+		A64ECE7D27E0DF8B0064CB4D /* Tests iOS */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A64ECEA027E0DF8B0064CB4D /* Build configuration list for PBXNativeTarget "Tests iOS" */;
+			buildPhases = (
+				A64ECE7A27E0DF8B0064CB4D /* Sources */,
+				A64ECE7B27E0DF8B0064CB4D /* Frameworks */,
+				A64ECE7C27E0DF8B0064CB4D /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				A64ECE8027E0DF8B0064CB4D /* PBXTargetDependency */,
+			);
+			name = "Tests iOS";
+			productName = "Tests iOS";
+			productReference = A64ECE7E27E0DF8B0064CB4D /* Tests iOS.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		A64ECE6527E0DF890064CB4D /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1410;
+				LastUpgradeCheck = 1340;
+				TargetAttributes = {
+					A64ECE7027E0DF8B0064CB4D = {
+						CreatedOnToolsVersion = 13.2.1;
+					};
+					A64ECE7D27E0DF8B0064CB4D = {
+						CreatedOnToolsVersion = 13.2.1;
+						TestTargetID = A64ECE7027E0DF8B0064CB4D;
+					};
+				};
+			};
+			buildConfigurationList = A64ECE6827E0DF890064CB4D /* Build configuration list for PBXProject "MobileMinter" */;
+			compatibilityVersion = "Xcode 13.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = A64ECE6427E0DF890064CB4D;
+			packageReferences = (
+				A6B47DC227E3E950009919E0 /* XCRemoteSwiftPackageReference "BetterSafariView" */,
+				A6B47DC827E3ECFF009919E0 /* XCRemoteSwiftPackageReference "CodeScanner" */,
+				A6B47DD627E526F4009919E0 /* XCRemoteSwiftPackageReference "SwiftyJSON" */,
+				A6B47DDB27E52790009919E0 /* XCRemoteSwiftPackageReference "Alamofire" */,
+				A65BB29C283BFE110078D8E5 /* XCRemoteSwiftPackageReference "stripe-terminal-ios" */,
+				A6562FF82846B483008EC448 /* XCRemoteSwiftPackageReference "QRCode" */,
+				8BFE81282906F93000D577E9 /* XCRemoteSwiftPackageReference "MintingKit" */,
+				8B7699C72947A435005EEF2B /* XCRemoteSwiftPackageReference "web3" */,
+				8B4421CE29B2596100157A65 /* XCRemoteSwiftPackageReference "Static" */,
+			);
+			productRefGroup = A64ECE7227E0DF8B0064CB4D /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				A64ECE7027E0DF8B0064CB4D /* MobileMinter */,
+				A64ECE7D27E0DF8B0064CB4D /* Tests iOS */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		A64ECE6F27E0DF8B0064CB4D /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A64ECE9627E0DF8B0064CB4D /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A64ECE7C27E0DF8B0064CB4D /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		A64ECE6D27E0DF8B0064CB4D /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A6B47DD427E3F3AF009919E0 /* ProjectsView.swift in Sources */,
+				A6AFC80F284022A8005BFC1A /* APIClient.swift in Sources */,
+				A643D892286EFD8200C7208E /* Haptics.swift in Sources */,
+				8B44220A29B25A2B00157A65 /* StripeCountries.swift in Sources */,
+				A64ECE9427E0DF8B0064CB4D /* ContentView.swift in Sources */,
+				A6B47DCE27E3ED3D009919E0 /* MintingView.swift in Sources */,
+				8B44220429B25A2B00157A65 /* Value1MultilineCell.swift in Sources */,
+				8B44220629B25A2B00157A65 /* EventDisplayingViewController.swift in Sources */,
+				8B44220329B25A2B00157A65 /* StartSetReaderDisplayViewController.swift in Sources */,
+				8B4421CD29B2553300157A65 /* ReaderViewController.swift in Sources */,
+				8B44220E29B25A2B00157A65 /* ReaderRegistrationViewController.swift in Sources */,
+				8B44220529B25A2B00157A65 /* StartRefundViewController.swift in Sources */,
+				8B4421F929B25A2B00157A65 /* LogEventViewController.swift in Sources */,
+				8B44220129B25A2B00157A65 /* StartPaymentViewController.swift in Sources */,
+				8B4421F429B25A2B00157A65 /* RefundViewController.swift in Sources */,
+				A6B47DD127E3EE42009919E0 /* LoginView.swift in Sources */,
+				A64ECE9227E0DF8B0064CB4D /* TXLess_MintApp.swift in Sources */,
+				A6B47DE127E53C8F009919E0 /* MintingEmbedView.swift in Sources */,
+				8B44220C29B25A2B00157A65 /* PaymentViewController.swift in Sources */,
+				8B4421FF29B25A2B00157A65 /* UIView+Layout.swift in Sources */,
+				8B44220F29B25A2B00157A65 /* DiscoveryMethodViewController.swift in Sources */,
+				8B4421D429B259F500157A65 /* CancelableViewController.swift in Sources */,
+				8B4421FD29B25A2B00157A65 /* UIViewController+UIAlertController.swift in Sources */,
+				8BF9606229B7AF4D008FFAE9 /* PaymentViewControllerView.swift in Sources */,
+				8B02BC2E2926961800177CC5 /* ImageModifier.swift in Sources */,
+				8B4421D229B259BF00157A65 /* ReaderDiscoveryViewController.swift in Sources */,
+				8B4421D629B25A1600157A65 /* CaptureMethod+String.swift in Sources */,
+				8B4421FA29B25A2B00157A65 /* ifaddrs.swift in Sources */,
+				8B4421F529B25A2B00157A65 /* SetupIntentViewController.swift in Sources */,
+				8B44220029B25A2B00157A65 /* StripeCurrencies.swift in Sources */,
+				8B44220D29B25A2B00157A65 /* ReadReusableCardViewController.swift in Sources */,
+				8B4421FE29B25A2B00157A65 /* RootViewController.swift in Sources */,
+				A643D88C286EEDF600C7208E /* ConfirmationView.swift in Sources */,
+				8B4421F729B25A2B00157A65 /* UpdateReaderViewController.swift in Sources */,
+				8B44220929B25A2B00157A65 /* ReaderHeaderView.swift in Sources */,
+				8B4421F629B25A2B00157A65 /* ReaderConfiguration.swift in Sources */,
+				8B44221029B25A2B00157A65 /* DelegateAnnouncer.swift in Sources */,
+				A643D889286EEB5300C7208E /* KeychainSwiftDistrib.swift in Sources */,
+				8B44220B29B25A2B00157A65 /* CustomViews.swift in Sources */,
+				8BA24F5129254FAF00A72F31 /* BlockLoadingView.swift in Sources */,
+				8B44220229B25A2B00157A65 /* TableViewController+StripeTerminal.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A64ECE7A27E0DF8B0064CB4D /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8BDA6A572925E378006261E6 /* Haptics.swift in Sources */,
+				8B02BC2F2926961800177CC5 /* ImageModifier.swift in Sources */,
+				8BDA6A5D2925E389006261E6 /* ConfirmationView.swift in Sources */,
+				A64ECE8527E0DF8B0064CB4D /* Tests_iOSLaunchTests.swift in Sources */,
+				A64ECE8327E0DF8B0064CB4D /* Tests_iOS.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		A64ECE8027E0DF8B0064CB4D /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = A64ECE7027E0DF8B0064CB4D /* MobileMinter */;
+			targetProxy = A64ECE7F27E0DF8B0064CB4D /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		A64ECE9827E0DF8B0064CB4D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				MACOSX_DEPLOYMENT_TARGET = 12.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		A64ECE9927E0DF8B0064CB4D /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				MACOSX_DEPLOYMENT_TARGET = 12.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+			};
+			name = Release;
+		};
+		A64ECE9B27E0DF8B0064CB4D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 61;
+				DEVELOPMENT_TEAM = VR4Q2LK67K;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "TXLess-Mint--iOS--Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = Minter;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
+				INFOPLIST_KEY_NSBluetoothAlwaysUsageDescription = "This app uses Bluetooth to connect to supported card readers.";
+				INFOPLIST_KEY_NSBluetoothPeripheralUsageDescription = "Bluetooth access is required in order to connect to supported card readers.";
+				INFOPLIST_KEY_NSCameraUsageDescription = "This app uses the camera to scan QR codes.";
+				INFOPLIST_KEY_NSFaceIDUsageDescription = "This app uses FaceID to unlock access to your data.";
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Location access is required in order to accept payments.";
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.4;
+				PRODUCT_BUNDLE_IDENTIFIER = io.artblocks.MobileMinter;
+				PRODUCT_NAME = "TXLess Mint";
+				SDKROOT = iphoneos;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		A64ECE9C27E0DF8B0064CB4D /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 61;
+				DEVELOPMENT_TEAM = VR4Q2LK67K;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "TXLess-Mint--iOS--Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = Minter;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
+				INFOPLIST_KEY_NSBluetoothAlwaysUsageDescription = "This app uses Bluetooth to connect to supported card readers.";
+				INFOPLIST_KEY_NSBluetoothPeripheralUsageDescription = "Bluetooth access is required in order to connect to supported card readers.";
+				INFOPLIST_KEY_NSCameraUsageDescription = "This app uses the camera to scan QR codes.";
+				INFOPLIST_KEY_NSFaceIDUsageDescription = "This app uses FaceID to unlock access to your data.";
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Location access is required in order to accept payments.";
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.4;
+				PRODUCT_BUNDLE_IDENTIFIER = io.artblocks.MobileMinter;
+				PRODUCT_NAME = "TXLess Mint";
+				SDKROOT = iphoneos;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		A64ECEA127E0DF8B0064CB4D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 56;
+				DEVELOPMENT_TEAM = U8AT98H9V3;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.2;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "io.artblocks.Tests-iOS";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = YES;
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = "TXLess Mint (iOS)";
+			};
+			name = Debug;
+		};
+		A64ECEA227E0DF8B0064CB4D /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 56;
+				DEVELOPMENT_TEAM = U8AT98H9V3;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.2;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "io.artblocks.Tests-iOS";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = YES;
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = "TXLess Mint (iOS)";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		A64ECE6827E0DF890064CB4D /* Build configuration list for PBXProject "MobileMinter" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A64ECE9827E0DF8B0064CB4D /* Debug */,
+				A64ECE9927E0DF8B0064CB4D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		A64ECE9A27E0DF8B0064CB4D /* Build configuration list for PBXNativeTarget "MobileMinter" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A64ECE9B27E0DF8B0064CB4D /* Debug */,
+				A64ECE9C27E0DF8B0064CB4D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		A64ECEA027E0DF8B0064CB4D /* Build configuration list for PBXNativeTarget "Tests iOS" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A64ECEA127E0DF8B0064CB4D /* Debug */,
+				A64ECEA227E0DF8B0064CB4D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		8B4421CE29B2596100157A65 /* XCRemoteSwiftPackageReference "Static" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/venmo/Static";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
+		8B7699C72947A435005EEF2B /* XCRemoteSwiftPackageReference "web3" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/argentlabs/web3.swift";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.0;
+			};
+		};
+		8BFE81282906F93000D577E9 /* XCRemoteSwiftPackageReference "MintingKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/ArtBlocks/MintingKit.git";
+			requirement = {
+				branch = dev;
+				kind = branch;
+			};
+		};
+		A6562FF82846B483008EC448 /* XCRemoteSwiftPackageReference "QRCode" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/dagronf/QRCode";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 4.0.0;
+			};
+		};
+		A65BB29C283BFE110078D8E5 /* XCRemoteSwiftPackageReference "stripe-terminal-ios" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/stripe/stripe-terminal-ios";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
+		A6B47DC227E3E950009919E0 /* XCRemoteSwiftPackageReference "BetterSafariView" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/stleamist/BetterSafariView.git";
+			requirement = {
+				branch = main;
+				kind = branch;
+			};
+		};
+		A6B47DC827E3ECFF009919E0 /* XCRemoteSwiftPackageReference "CodeScanner" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/twostraws/CodeScanner.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.0.0;
+			};
+		};
+		A6B47DD627E526F4009919E0 /* XCRemoteSwiftPackageReference "SwiftyJSON" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SwiftyJSON/SwiftyJSON.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.0.0;
+			};
+		};
+		A6B47DDB27E52790009919E0 /* XCRemoteSwiftPackageReference "Alamofire" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Alamofire/Alamofire.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		8B4421CF29B2596100157A65 /* Static */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 8B4421CE29B2596100157A65 /* XCRemoteSwiftPackageReference "Static" */;
+			productName = Static;
+		};
+		8B7699C82947A435005EEF2B /* web3.swift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 8B7699C72947A435005EEF2B /* XCRemoteSwiftPackageReference "web3" */;
+			productName = web3.swift;
+		};
+		8BFE81292906F93000D577E9 /* MintingKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 8BFE81282906F93000D577E9 /* XCRemoteSwiftPackageReference "MintingKit" */;
+			productName = MintingKit;
+		};
+		A6562FF92846B483008EC448 /* QRCode */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = A6562FF82846B483008EC448 /* XCRemoteSwiftPackageReference "QRCode" */;
+			productName = QRCode;
+		};
+		A65BB29D283BFE110078D8E5 /* StripeTerminal */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = A65BB29C283BFE110078D8E5 /* XCRemoteSwiftPackageReference "stripe-terminal-ios" */;
+			productName = StripeTerminal;
+		};
+		A6B47DC327E3E950009919E0 /* BetterSafariView */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = A6B47DC227E3E950009919E0 /* XCRemoteSwiftPackageReference "BetterSafariView" */;
+			productName = BetterSafariView;
+		};
+		A6B47DC927E3ECFF009919E0 /* CodeScanner */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = A6B47DC827E3ECFF009919E0 /* XCRemoteSwiftPackageReference "CodeScanner" */;
+			productName = CodeScanner;
+		};
+		A6B47DD727E526F4009919E0 /* SwiftyJSON */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = A6B47DD627E526F4009919E0 /* XCRemoteSwiftPackageReference "SwiftyJSON" */;
+			productName = SwiftyJSON;
+		};
+		A6B47DDC27E52790009919E0 /* Alamofire */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = A6B47DDB27E52790009919E0 /* XCRemoteSwiftPackageReference "Alamofire" */;
+			productName = Alamofire;
+		};
+/* End XCSwiftPackageProductDependency section */
+	};
+	rootObject = A64ECE6527E0DF890064CB4D /* Project object */;
+}
