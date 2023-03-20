@@ -74,13 +74,19 @@ public struct MKMinting: Codable {
   var isPaid: Bool = false
 }
 
-/**
- Provides an SDK for quickly deploying apps built on top of the Art Blocks Minting API.
- - Parameter authToken: The authentication token for the current user
- */
+/// Provides an SDK for quickly deploying apps built on top of the Art Blocks Minting API.
+/// - Parameter authToken: The authentication token for the current user
 public struct MintingKit {
   /// The API token obtaiend for the currently-authenticated user
   let authToken: String
+
+  /**
+  Initialize the SDK with an authentication token.
+  - Returns: A new MintingKit instance.
+  */
+  public init(authToken: String) {
+    self.authToken = authToken
+  }
 
   /**
    Constructs HTTP heards for authentication and data type to make HTTP REST API calls.
