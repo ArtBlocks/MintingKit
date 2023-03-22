@@ -1,4 +1,5 @@
 # MintingKit: Swift5 Minting API Client
+[![GitPOAPs](https://public-api.gitpoap.io/v1/repo/ArtBlocks/MintingKit/badge)](https://www.gitpoap.io/gh/ArtBlocks/MintingKit)
 
 ## Repository Status: Public Beta
 
