@@ -10,6 +10,7 @@ import MintingKit
 import StripeTerminal
 import SwiftUI
 import SwiftyJSON
+import web3
 
 struct ConfirmationView: View {
   @Environment(\.dismiss) var dismiss
@@ -203,7 +204,7 @@ struct ConfirmationView: View {
         "Accept": "application/json",
       ]
       let parameters: [String: String] = [
-        "destination_wallet": scannedCode,
+        "destination_wallet": EthereumAddress(scannedCode).toChecksumAddress(),
         "project": (currentProject?.id ?? ""),
       ]
 
