@@ -9,7 +9,7 @@ This documentation provides examples and information for implementing client app
 
 Before you can consume the API, you will need a user account. If you have any questions or need help setting up your account, join our Discord.
 
-### Swift Docs: https://miniature-eureka-a6437639.pages.github.io/documentation/mintingkit/mintingkit
+### Swift Docs: https://artblocks.github.io/MintingKit/documentation/mintingkit/mintingkit
 
 ### REST API: https://minting-api.artblocks.io/docs
 
@@ -30,4 +30,3 @@ To get started developing this repository, you will need to perform these steps 
 4. Install pre-commit hooks: `pre-commit install`
 
 Once you have the development environment set up, you can commit code changes and run tests.
-
