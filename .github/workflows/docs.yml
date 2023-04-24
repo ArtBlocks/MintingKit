@@ -32,6 +32,7 @@ jobs:
       with:
         target: MintingKit
         output: ./public
+        hosting-base-path: MintingKit
         transform-for-static-hosting: 'true'
         disable-indexing: 'true'
     - name: Upload artifact
