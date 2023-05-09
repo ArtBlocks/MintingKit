@@ -9,6 +9,8 @@ This documentation provides examples and information for implementing client app
 
 Before you can consume the API, you will need a user account. If you have any questions or need help setting up your account, join our Discord.
 
+### Mobile Minter Overview: https://docs.artblocks.io/creator-docs/art-blocks-engine-onboarding/art-blocks-engine-101/mobile-minter/
+
 ### Swift Docs: https://artblocks.github.io/MintingKit/documentation/mintingkit/mintingkit
 
 ### REST API: https://minting-api.artblocks.io/docs
