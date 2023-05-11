@@ -1,10 +1,3 @@
-//
-//  LoginView.swift
-//  TXLess Mint
-//
-//  Created by Shantanu Bala on 3/17/22.
-//
-
 import BetterSafariView
 import LocalAuthentication
 import MintingKit
@@ -15,63 +8,66 @@ struct LoginView: View {
   @Binding var currentToken: String?
   @Binding var currentScreen: ScreenID
   let keychain = KeychainSwift()
+
   var body: some View {
     Form {
       Button("Sign in") {
         startingWebAuthenticationSession = true
       }
-    }.onAppear {
-      DispatchQueue.main.async {
-        guard let lastOpened = UserDefaults.standard.object(forKey: "LastOpened") as? Date else {
-          return
-        }
-        guard
-          let elapsed = Calendar.current.dateComponents([.day], from: lastOpened, to: Date()).day
-        else {
-          return
-        }
-        if elapsed >= 6 {
-          return
-        }
-        if let t = keychain.get("authToken") {
-          self.currentToken = t
-          let context = LAContext()
-          var error: NSError?
-
-          // check whether biometric authentication is possible
-          if context.canEvaluatePolicy(.deviceOwnerAuthenticationWithBiometrics, error: &error) {
-            // it's possible, so go ahead and use it
-            let reason = "We need to unlock your data."
-
-            context.evaluatePolicy(
-              .deviceOwnerAuthenticationWithBiometrics, localizedReason: reason
-            ) { success, authenticationError in
-              // authentication has now completed
-              if success {
-                currentScreen = .projects
-              } else {
-                // there was a problem
-              }
-            }
-          } else {
-            // no biometrics
-          }
-        }
-      }
     }
+    .onAppear(perform: retrieveSavedAuthenticationToken)
     .webAuthenticationSession(isPresented: $startingWebAuthenticationSession) {
       WebAuthenticationSession(
         url: URL(string: "https://minting-api.artblocks.io/app/?appauth=true")!,
         callbackURLScheme: "txlessauth"
       ) { callbackURL, error in
-        currentToken = callbackURL?.host
-        if let t = currentToken {
+        handleWebAuthentication(callbackURL: callbackURL)
+      }
+    }
+  }
+
+  private func retrieveSavedAuthenticationToken() {
+    guard let lastOpened = UserDefaults.standard.object(forKey: "LastOpened") as? Date else {
+      return
+    }
+
+    let elapsed = daysElapsed(from: lastOpened, to: Date())
+
+    if elapsed < 6, let savedToken = keychain.get("authToken") {
+      currentToken = savedToken
+      authenticateUser()
+    }
+  }
+
+  private func daysElapsed(from startDate: Date, to endDate: Date) -> Int {
+    Calendar.current.dateComponents([.day], from: startDate, to: endDate).day ?? 0
+  }
+
+  private func authenticateUser() {
+    let context = LAContext()
+    var error: NSError?
+
+    if context.canEvaluatePolicy(.deviceOwnerAuthenticationWithBiometrics, error: &error) {
+      context.evaluatePolicy(
+        .deviceOwnerAuthenticationWithBiometrics,
+        localizedReason: "We need to unlock your data."
+      ) { success, authenticationError in
+        if success {
           DispatchQueue.main.async {
-            keychain.set(t, forKey: "authToken")
-            UserDefaults.standard.set(Date(), forKey: "LastOpened")
+            currentScreen = .projects
           }
-          currentScreen = .projects
         }
+      }
+    }
+  }
+
+  private func handleWebAuthentication(callbackURL: URL?) {
+    currentToken = callbackURL?.host
+    if let t = currentToken {
+      DispatchQueue.main.async {
+        keychain.set(t, forKey: "authToken")
+        UserDefaults.standard.set(Date(), forKey: "LastOpened")
+        currentScreen = .projects
       }
     }
   }

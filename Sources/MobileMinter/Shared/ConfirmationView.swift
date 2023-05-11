@@ -52,7 +52,7 @@ struct ConfirmationView: View {
   }
 
   var body: some View {
-    NavigationView {
+    NavigationStack {
       Group {
         if isConfirmed && (paidWithCard) {
           VStack {

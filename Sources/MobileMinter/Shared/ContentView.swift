@@ -1,10 +1,3 @@
-//
-//  ContentView.swift
-//  Shared
-//
-//  Created by Shantanu Bala on 3/15/22.
-//
-
 import SwiftUI
 
 enum ScreenID {
@@ -14,32 +7,42 @@ enum ScreenID {
 }
 
 struct ContentView: View {
-  // the current authentication token for the user
   @State var currentToken: String? = nil
-
-  // the current PBAB project being minted
   @State var currentProject: Project? = nil
-
-  // the current screen displayed to the user
   @State var currentScreen: ScreenID = .login
 
   var body: some View {
-    NavigationView {
-      if currentScreen == .login {
-        LoginView(currentToken: $currentToken, currentScreen: $currentScreen).navigationTitle(
-          "Login")
-      } else if currentScreen == .projects {
+    NavigationStack {
+      currentView.navigationTitle(currentViewTitle)
+    }
+  }
+
+  private var currentView: some View {
+    switch currentScreen {
+    case .login:
+      return AnyView(LoginView(currentToken: $currentToken, currentScreen: $currentScreen))
+    case .projects:
+      return AnyView(
         ProjectsView(
           currentToken: $currentToken, currentProject: $currentProject,
-          currentScreen: $currentScreen
-        ).navigationTitle("Projects")
-      } else if currentScreen == .minting {
+          currentScreen: $currentScreen))
+    case .minting:
+      return AnyView(
         MintingView(
           currentToken: $currentToken, currentScreen: $currentScreen,
-          currentProject: $currentProject
-        ).navigationTitle(currentProject?.title ?? "Minting")
-      }
-    }.navigationViewStyle(StackNavigationViewStyle())
+          currentProject: $currentProject))
+    }
+  }
+
+  private var currentViewTitle: String {
+    switch currentScreen {
+    case .login:
+      return "Login"
+    case .projects:
+      return "Projects"
+    case .minting:
+      return currentProject?.title ?? "Minting"
+    }
   }
 }
 

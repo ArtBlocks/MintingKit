@@ -51,7 +51,7 @@
 		A643D892286EFD8200C7208E /* Haptics.swift in Sources */ = {isa = PBXBuildFile; fileRef = A643D891286EFD8200C7208E /* Haptics.swift */; };
 		A64ECE8327E0DF8B0064CB4D /* Tests_iOS.swift in Sources */ = {isa = PBXBuildFile; fileRef = A64ECE8227E0DF8B0064CB4D /* Tests_iOS.swift */; };
 		A64ECE8527E0DF8B0064CB4D /* Tests_iOSLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A64ECE8427E0DF8B0064CB4D /* Tests_iOSLaunchTests.swift */; };
-		A64ECE9227E0DF8B0064CB4D /* TXLess_MintApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = A64ECE6A27E0DF890064CB4D /* TXLess_MintApp.swift */; };
+		A64ECE9227E0DF8B0064CB4D /* MobileMinterApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = A64ECE6A27E0DF890064CB4D /* MobileMinterApp.swift */; };
 		A64ECE9427E0DF8B0064CB4D /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A64ECE6B27E0DF890064CB4D /* ContentView.swift */; };
 		A64ECE9627E0DF8B0064CB4D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A64ECE6C27E0DF8B0064CB4D /* Assets.xcassets */; };
 		A6562FFA2846B483008EC448 /* QRCode in Frameworks */ = {isa = PBXBuildFile; productRef = A6562FF92846B483008EC448 /* QRCode */; };
@@ -129,7 +129,7 @@
 		A643D888286EEB5300C7208E /* KeychainSwiftDistrib.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainSwiftDistrib.swift; sourceTree = "<group>"; };
 		A643D88B286EEDF600C7208E /* ConfirmationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfirmationView.swift; sourceTree = "<group>"; };
 		A643D891286EFD8200C7208E /* Haptics.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Haptics.swift; sourceTree = "<group>"; };
-		A64ECE6A27E0DF890064CB4D /* TXLess_MintApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TXLess_MintApp.swift; sourceTree = "<group>"; };
+		A64ECE6A27E0DF890064CB4D /* MobileMinterApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MobileMinterApp.swift; sourceTree = "<group>"; };
 		A64ECE6B27E0DF890064CB4D /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		A64ECE6C27E0DF8B0064CB4D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A64ECE7127E0DF8B0064CB4D /* TXLess Mint.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "TXLess Mint.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -241,7 +241,7 @@
 				8BB82C672A0D1C8100121CF3 /* Shortcuts */,
 				8BF9606029B7AF3B008FFAE9 /* Payments */,
 				8B4421CB29B2543600157A65 /* Stripe */,
-				A64ECE6A27E0DF890064CB4D /* TXLess_MintApp.swift */,
+				A64ECE6A27E0DF890064CB4D /* MobileMinterApp.swift */,
 				A6B47DD327E3F3AF009919E0 /* ProjectsView.swift */,
 				A64ECE6B27E0DF890064CB4D /* ContentView.swift */,
 				A6B47DD027E3EE42009919E0 /* LoginView.swift */,
@@ -421,7 +421,7 @@
 				8B44220129B25A2B00157A65 /* StartPaymentViewController.swift in Sources */,
 				8B4421F429B25A2B00157A65 /* RefundViewController.swift in Sources */,
 				A6B47DD127E3EE42009919E0 /* LoginView.swift in Sources */,
-				A64ECE9227E0DF8B0064CB4D /* TXLess_MintApp.swift in Sources */,
+				A64ECE9227E0DF8B0064CB4D /* MobileMinterApp.swift in Sources */,
 				A6B47DE127E53C8F009919E0 /* MintingEmbedView.swift in Sources */,
 				8B44220C29B25A2B00157A65 /* PaymentViewController.swift in Sources */,
 				8B4421FF29B25A2B00157A65 /* UIView+Layout.swift in Sources */,
