@@ -28,6 +28,8 @@ class AppState: ObservableObject {
   static let shared = AppState()
 
   @Published var sessionID = UUID()
+  @Published var intentMintProject = false
+  @Published var intentOpenProject = ""
 }
 
 @main

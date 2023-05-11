@@ -40,6 +40,8 @@
 		8B44221029B25A2B00157A65 /* DelegateAnnouncer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B4421F329B25A2B00157A65 /* DelegateAnnouncer.swift */; };
 		8B7699C92947A435005EEF2B /* web3.swift in Frameworks */ = {isa = PBXBuildFile; productRef = 8B7699C82947A435005EEF2B /* web3.swift */; };
 		8BA24F5129254FAF00A72F31 /* BlockLoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BA24F5029254FAF00A72F31 /* BlockLoadingView.swift */; };
+		8BB82C6B2A0D224300121CF3 /* MintProjectToken.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BB82C6A2A0D224300121CF3 /* MintProjectToken.swift */; };
+		8BB82C6D2A0D2E8B00121CF3 /* OpenProject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BB82C6C2A0D2E8B00121CF3 /* OpenProject.swift */; };
 		8BDA6A572925E378006261E6 /* Haptics.swift in Sources */ = {isa = PBXBuildFile; fileRef = A643D891286EFD8200C7208E /* Haptics.swift */; };
 		8BDA6A5D2925E389006261E6 /* ConfirmationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A643D88B286EEDF600C7208E /* ConfirmationView.swift */; };
 		8BF9606229B7AF4D008FFAE9 /* PaymentViewControllerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BF9606129B7AF4D008FFAE9 /* PaymentViewControllerView.swift */; };
@@ -121,6 +123,8 @@
 		8B4421F229B25A2B00157A65 /* DiscoveryMethodViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DiscoveryMethodViewController.swift; sourceTree = "<group>"; };
 		8B4421F329B25A2B00157A65 /* DelegateAnnouncer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DelegateAnnouncer.swift; sourceTree = "<group>"; };
 		8BA24F5029254FAF00A72F31 /* BlockLoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlockLoadingView.swift; sourceTree = "<group>"; };
+		8BB82C6A2A0D224300121CF3 /* MintProjectToken.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MintProjectToken.swift; sourceTree = "<group>"; };
+		8BB82C6C2A0D2E8B00121CF3 /* OpenProject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenProject.swift; sourceTree = "<group>"; };
 		8BF9606129B7AF4D008FFAE9 /* PaymentViewControllerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentViewControllerView.swift; sourceTree = "<group>"; };
 		A643D888286EEB5300C7208E /* KeychainSwiftDistrib.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainSwiftDistrib.swift; sourceTree = "<group>"; };
 		A643D88B286EEDF600C7208E /* ConfirmationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfirmationView.swift; sourceTree = "<group>"; };
@@ -129,12 +133,9 @@
 		A64ECE6B27E0DF890064CB4D /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		A64ECE6C27E0DF8B0064CB4D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A64ECE7127E0DF8B0064CB4D /* TXLess Mint.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "TXLess Mint.app"; sourceTree = BUILT_PRODUCTS_DIR; };
-		A64ECE7927E0DF8B0064CB4D /* macOS.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = macOS.entitlements; sourceTree = "<group>"; };
 		A64ECE7E27E0DF8B0064CB4D /* Tests iOS.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Tests iOS.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A64ECE8227E0DF8B0064CB4D /* Tests_iOS.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tests_iOS.swift; sourceTree = "<group>"; };
 		A64ECE8427E0DF8B0064CB4D /* Tests_iOSLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tests_iOSLaunchTests.swift; sourceTree = "<group>"; };
-		A64ECE8E27E0DF8B0064CB4D /* Tests_macOS.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tests_macOS.swift; sourceTree = "<group>"; };
-		A64ECE9027E0DF8B0064CB4D /* Tests_macOSLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tests_macOSLaunchTests.swift; sourceTree = "<group>"; };
 		A6AFC80D28401C3D005BFC1A /* TXLess-Mint--iOS--Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "TXLess-Mint--iOS--Info.plist"; sourceTree = "<group>"; };
 		A6AFC80E284022A8005BFC1A /* APIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIClient.swift; sourceTree = "<group>"; };
 		A6B47DCD27E3ED3D009919E0 /* MintingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MintingView.swift; sourceTree = "<group>"; };
@@ -206,6 +207,15 @@
 			path = Stripe;
 			sourceTree = "<group>";
 		};
+		8BB82C672A0D1C8100121CF3 /* Shortcuts */ = {
+			isa = PBXGroup;
+			children = (
+				8BB82C6A2A0D224300121CF3 /* MintProjectToken.swift */,
+				8BB82C6C2A0D2E8B00121CF3 /* OpenProject.swift */,
+			);
+			path = Shortcuts;
+			sourceTree = "<group>";
+		};
 		8BF9606029B7AF3B008FFAE9 /* Payments */ = {
 			isa = PBXGroup;
 			children = (
@@ -219,9 +229,7 @@
 			children = (
 				A6AFC80D28401C3D005BFC1A /* TXLess-Mint--iOS--Info.plist */,
 				A64ECE6927E0DF890064CB4D /* Shared */,
-				A64ECE7827E0DF8B0064CB4D /* macOS */,
 				A64ECE8127E0DF8B0064CB4D /* Tests iOS */,
-				A64ECE8D27E0DF8B0064CB4D /* Tests macOS */,
 				A64ECE7227E0DF8B0064CB4D /* Products */,
 				A6B47DC527E3EA8F009919E0 /* Frameworks */,
 			);
@@ -230,6 +238,7 @@
 		A64ECE6927E0DF890064CB4D /* Shared */ = {
 			isa = PBXGroup;
 			children = (
+				8BB82C672A0D1C8100121CF3 /* Shortcuts */,
 				8BF9606029B7AF3B008FFAE9 /* Payments */,
 				8B4421CB29B2543600157A65 /* Stripe */,
 				A64ECE6A27E0DF890064CB4D /* TXLess_MintApp.swift */,
@@ -257,14 +266,6 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		A64ECE7827E0DF8B0064CB4D /* macOS */ = {
-			isa = PBXGroup;
-			children = (
-				A64ECE7927E0DF8B0064CB4D /* macOS.entitlements */,
-			);
-			path = macOS;
-			sourceTree = "<group>";
-		};
 		A64ECE8127E0DF8B0064CB4D /* Tests iOS */ = {
 			isa = PBXGroup;
 			children = (
@@ -272,15 +273,6 @@
 				A64ECE8427E0DF8B0064CB4D /* Tests_iOSLaunchTests.swift */,
 			);
 			path = "Tests iOS";
-			sourceTree = "<group>";
-		};
-		A64ECE8D27E0DF8B0064CB4D /* Tests macOS */ = {
-			isa = PBXGroup;
-			children = (
-				A64ECE8E27E0DF8B0064CB4D /* Tests_macOS.swift */,
-				A64ECE9027E0DF8B0064CB4D /* Tests_macOSLaunchTests.swift */,
-			);
-			path = "Tests macOS";
 			sourceTree = "<group>";
 		};
 		A6B47DC527E3EA8F009919E0 /* Frameworks */ = {
@@ -421,6 +413,7 @@
 				8B44220429B25A2B00157A65 /* Value1MultilineCell.swift in Sources */,
 				8B44220629B25A2B00157A65 /* EventDisplayingViewController.swift in Sources */,
 				8B44220329B25A2B00157A65 /* StartSetReaderDisplayViewController.swift in Sources */,
+				8BB82C6B2A0D224300121CF3 /* MintProjectToken.swift in Sources */,
 				8B4421CD29B2553300157A65 /* ReaderViewController.swift in Sources */,
 				8B44220E29B25A2B00157A65 /* ReaderRegistrationViewController.swift in Sources */,
 				8B44220529B25A2B00157A65 /* StartRefundViewController.swift in Sources */,
@@ -453,6 +446,7 @@
 				8B44220B29B25A2B00157A65 /* CustomViews.swift in Sources */,
 				8BA24F5129254FAF00A72F31 /* BlockLoadingView.swift in Sources */,
 				8B44220229B25A2B00157A65 /* TableViewController+StripeTerminal.swift in Sources */,
+				8BB82C6D2A0D2E8B00121CF3 /* OpenProject.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -619,7 +613,7 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -659,7 +653,7 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
