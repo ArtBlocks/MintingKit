@@ -32,3 +32,4 @@ To get started developing this repository, you will need to perform these steps 
 4. Install pre-commit hooks: `pre-commit install`
 
 Once you have the development environment set up, you can commit code changes and run tests.
+
